@@ -1,0 +1,14 @@
+#image
+{
+    width: 90%;
+    max-width: 520px;
+    max-height: 88px;
+    margin: auto;
+}
+
+#htext
+{
+    padding: 2px 0;
+    margin: 0;
+    font-size: small;
+}
