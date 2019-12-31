@@ -18,5 +18,8 @@ export class PlaceListComponent implements OnInit {
     console.log("add place")
     this.router.navigateByUrl('placeadd');
   }
-
+  logOut()
+  {
+    
+  }
 }

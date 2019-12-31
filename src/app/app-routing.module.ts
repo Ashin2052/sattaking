@@ -18,17 +18,21 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
   },
+  // {
+  //   path:'admin',
+  //   canActivate:[AuthGuard],
+  //   component:AdminComponent
+  // },
   {
     path:'admin',
-    canActivate:[AuthGuard],
-    component:AdminComponent
-  },
-  {
-    path:'palceList',
     component:PlaceListComponent
   },
   {
     path:'placeadd',
+    component:PlacelistformComponent
+  },
+  {
+    path:'placeadd/:id',
     component:PlacelistformComponent
   }
 

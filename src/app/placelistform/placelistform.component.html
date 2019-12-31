@@ -1,1 +1,120 @@
-<p>placelistform works!</p>
+<div class="container">
+    <!-- Content here -->
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>                 {{ urlId ? "Update " : "Add " }}
+            Places
+
+        </div>
+        <div class="card-body">
+            <form [formGroup]="placeAddForm">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="Name">place Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="elementsName"
+                      placeholder="Enter Name"
+                      [(ngModel)]="placeModel.placeName"
+                      formControlName="placeName"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && f.placeName.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && f.placeName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.placeName.errors.required">
+                        Place name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="Action">Place Abbvr</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="elementsAction"
+                      formControlName="placeAbbvr"
+                      [(ngModel)]="placeModel.placeAbbvr"
+                      placeholder="Enter Action"
+                      [ngClass]="{
+                        'is-invalid': submitted && f.placeAbbvr.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && f.placeAbbvr.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.placeAbbvr.errors.required">
+                        place abbreviation name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="Before-context"
+                      >place Time</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="elementsContext"
+                      formControlName="placeTime"
+                      placeholder="Enter placeTime "
+                      [(ngModel)]="placeModel.placeTime"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted && f.placeTime.errors
+                      }"
+                    />
+                    <div
+                    *ngIf="submitted && f.placeTime.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.placeTime.errors.required">
+                       place Time name is required
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              
+              </form>
+
+              <div class="form-group">
+                <button
+                  id="cancelAgentButton"
+                  style="    position: relative;
+                  top: 4px;
+                  left: 4px;"
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="cancelStory()"
+                >
+                  Cancel
+                </button>
+              </div>
+              <div class="form-group">
+                <button
+                  id="saveButton"
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="  saveEditOptions()"
+                >
+                  {{ urlId ? "Update " : "Save " }}
+                </button>
+              </div>
+        </div>
+
+
+    </div>
+
+  </div>
