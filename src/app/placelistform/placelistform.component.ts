@@ -25,6 +25,8 @@ export class PlacelistformComponent implements OnInit {
   
 
   ngOnInit() {
+    this.toastr.overlayContainer = this.toastContainer;
+
     this.placeAddForm = this.formBuilder.group({
       placeName: ['', <any>Validators.required],
       placeAbbvr: ['', <any>Validators.required],
@@ -32,13 +34,55 @@ export class PlacelistformComponent implements OnInit {
 
     })
     this.urlId=this.activateRoute.snapshot.paramMap.get('id')
-
+ this.chooseOptions()
 
 
   }
   get f() { return this.placeAddForm.controls; }
+  chooseOptions()
+  {
+ if(this.urlId && typeof(this.urlId)!="undefined")
+ {
+   this.placeService.getParticularPlace(this.urlId).subscribe((response:any)=>
+   {
+     this.placeModel=response;
+   })
+ }
+  }
 
   saveEditOptions()
+{
+  if(this.urlId && typeof(this.urlId)!="undefined")
+{
+  this.update()
+}
+else
+{
+  this.save()
+}
+
+
+}
+update()
+{
+  this.submitted=true;
+  if(this.placeAddForm.invalid)
+  {
+    return;
+  }
+  else
+  {
+    this.placeService.updatePlace(this.urlId,this.placeModel).subscribe((response):any=>{
+     this.router.navigateByUrl('admin')
+     this.toastr.success("Place successfully saved")
+    },err=>
+    {
+      this.toastr.error("Place saved unsuccessfull!!!","",{ positionClass: 'toast-top-center'})
+    })
+  }
+}
+
+  save()
   { 
     this.submitted=true;
     if(this.placeAddForm.invalid)
@@ -49,6 +93,7 @@ export class PlacelistformComponent implements OnInit {
     {
       this.placeService.savePlace(this.placeModel).subscribe((response):any=>{
        this.router.navigateByUrl('admin')
+       this.toastr.success("Place successfully saved")
       },err=>
       {
         this.toastr.error("Place saved unsuccessfull!!!","",{ positionClass: 'toast-top-center'})

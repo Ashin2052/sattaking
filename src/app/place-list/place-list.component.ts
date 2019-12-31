@@ -16,6 +16,8 @@ p: number = 1;
   constructor(private router: Router,private placeServce:PlaceServiceService,private toastr:ToastrService) { }
 
   ngOnInit() {
+    this.toastr.overlayContainer = this.toastContainer;
+
     this.getAllPlace()
   }
 
