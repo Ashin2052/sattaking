@@ -1,5 +1,6 @@
 import { EventEmitter, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm, FormControl } from '@angular/forms';
+import {ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlaceServiceService } from '../services/place-service.service';
@@ -18,8 +19,9 @@ export class PlacelistformComponent implements OnInit {
   placeModel=new PlaceModel()
   placeAddForm: FormGroup;
   @ViewChild("createPlace", { static: false }) formData: NgForm;
+  @ViewChild(ToastContainerDirective, {static: false}) toastContainer: ToastContainerDirective;
 
-  constructor(private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
+  constructor( private toastr: ToastrService,private router: Router,private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
   
 
   ngOnInit() {
@@ -37,11 +39,26 @@ export class PlacelistformComponent implements OnInit {
   get f() { return this.placeAddForm.controls; }
 
   saveEditOptions()
-  {
+  { 
+    this.submitted=true;
+    if(this.placeAddForm.invalid)
+    {
+      return;
+    }
+    else
+    {
+      this.placeService.savePlace(this.placeModel).subscribe((response):any=>{
+       this.router.navigateByUrl('admin')
+      },err=>
+      {
+        this.toastr.error("Place saved unsuccessfull!!!","",{ positionClass: 'toast-top-center'})
+      })
+    }
 
   }
   cancelStory()
   {
-    
+    this.router.navigateByUrl('admin')
+    this.placeModel=new PlaceModel()
   }
 }

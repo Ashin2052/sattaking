@@ -10,7 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LoginComponent implements OnInit {
   public jwtHelper: JwtHelperService
 
-  loginError;
+  loginErr;
   constructor(private Service:ServicesService,private router:Router) { 
 
     this.jwtHelper = new JwtHelperService();
@@ -26,31 +26,31 @@ export class LoginComponent implements OnInit {
 
   routeChange()
   {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem('sattaToken'));
     if(token)
     {
       if(!this.jwtHelper.isTokenExpired(token.jwtToken))
       {
-       this.router.navigateByUrl('login')
+       this.router.navigateByUrl('admin')
      }
     }
      
   }
   login(user)
   {
-    console.log(user,"user")
     this.Service.login(user).subscribe((response:any)=>
     {
       if(response)
       {    
-
+        
           //  console.log(response.userMap.id,"response")
-           localStorage.setItem('token', JSON.stringify(response));
-            this.router.navigateByUrl('')
+           localStorage.setItem('sattaToken', JSON.stringify(response));
+            this.router.navigateByUrl('admin')
            return true;
 
     }},(error)=>{
-      this.loginError="your username or password mismatch";
+      this.loginErr="username or password error";
+      console.log("loginErr")
       // console.log(this.loginError,"error")
 
       

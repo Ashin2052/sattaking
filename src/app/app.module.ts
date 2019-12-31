@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
@@ -15,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { PlaceListComponent } from './place-list/place-list.component';
 import { PlacelistformComponent } from './placelistform/placelistform.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,13 +31,14 @@ import { PlacelistformComponent } from './placelistform/placelistform.component'
     AdminComponent,
     PlaceListComponent,
     PlacelistformComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
+    AppRoutingModule,BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 6000,
       positionClass: 'toast-top-right',
@@ -41,7 +47,8 @@ import { PlacelistformComponent } from './placelistform/placelistform.component'
     ToastContainerModule,
     NgxPaginationModule
   ],
-  providers: [ JwtHelperService],
+  providers: [ JwtHelperService,AuthService,
+    AuthGuardService,],
   bootstrap: [AppComponent
   ]
 })

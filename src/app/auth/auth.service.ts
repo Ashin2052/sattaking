@@ -10,7 +10,7 @@ export class AuthService {
     }
     public isAuthenticated(): boolean {
 
-        const token = JSON.parse(localStorage.getItem('token'));
+        const token = JSON.parse(localStorage.getItem('sattaToken'));
         if (token) {
             // console.log(token.jwtToken, "jettoken")
             // Check whether the token is expired and return

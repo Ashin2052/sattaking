@@ -25,14 +25,18 @@ const routes: Routes = [
   // },
   {
     path:'admin',
+    canActivate:[AuthGuard],
+
     component:PlaceListComponent
   },
   {
     path:'placeadd',
+    canActivate:[AuthGuard],
     component:PlacelistformComponent
   },
   {
     path:'placeadd/:id',
+    canActivate:[AuthGuard],
     component:PlacelistformComponent
   }
 

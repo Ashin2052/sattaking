@@ -1,41 +1,71 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceServiceService {
 
-  baserUrl=environment.baseUrl+'/rest/v1/';
+  baseUrl=environment.baseUrl+'/rest/v1/place/';
+  sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
   constructor(private httpClient: HttpClient) { }
 
 savePlace(place)
 {
-  return this.httpClient.post(this.baserUrl+"login/",place);
-
+  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+ console.log(this.baseUrl,place)
+  return this.httpClient.post(this.baseUrl,place,{
+    headers:new HttpHeaders({
+      Authorization:this.sattaToken
+    })
+  });
 }
 
-deletePlace()
+deletePlace(id)
 {
+  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
+  return this.httpClient.delete(this.baseUrl+id,{
+    headers:new HttpHeaders({
+      Authorization:this.sattaToken
+    })
+  });
 }
 
-updatePlace()
+updatePlace(id,value)
 {
+  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
+  return this.httpClient.put(this.baseUrl+id,value,{
+    headers:new HttpHeaders({
+      Authorization:this.sattaToken
+    })
+  });
 }
 
 
 
   getAllPlace()
   {
+    this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
+    return this.httpClient.get(this.baseUrl,{
+      headers:new HttpHeaders({
+        Authorization:this.sattaToken
+      })
+    });
   }
 
-getParticularPlace()
+getParticularPlace(id)
 {
+  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
+  return this.httpClient.get(this.baseUrl+id,{
+    headers:new HttpHeaders({
+      Authorization:this.sattaToken
+    })
+  });
 }
 
 }
