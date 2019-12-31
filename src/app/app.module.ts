@@ -10,6 +10,14 @@ import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AdminComponent } from './admin/admin.component';
 
+
+
+import { ServicesService } from './services.service';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { PlaceListComponent } from './place-list/place-list.component';
+import { PlacelistformComponent } from './placelistform/placelistform.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +26,17 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     MainPageComponent,
     AdminComponent,
+    PlaceListComponent,
+    PlacelistformComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ JwtHelperService],
+  bootstrap: [AppComponent
+  ]
 })
 export class AppModule { }
