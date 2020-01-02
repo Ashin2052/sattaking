@@ -74,7 +74,7 @@ update()
   {
     this.placeService.updatePlace(this.urlId,this.placeModel).subscribe((response):any=>{
      this.router.navigateByUrl('admin')
-     this.toastr.success("Place successfully saved")
+     this.toastr.success("Place successfully updated")
     },err=>
     {
       this.toastr.error("Place saved unsuccessfull!!!","",{ positionClass: 'toast-top-center'})
