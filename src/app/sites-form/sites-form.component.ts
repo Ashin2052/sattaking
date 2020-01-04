@@ -82,6 +82,21 @@ for(var i=0;i<this.allValueList.length;i++)
     }
 }}
 }
+chooMethod()
+{
+  if(this.urlId && (typeof(this.urlId))!="undefined")
+  {
+    this.updateSite()
+  }
+  else
+  {
+    this.saveSite()
+  }
+}
+updateSite()
+{
+
+}
 saveSite()
 {
 
@@ -97,6 +112,12 @@ if(this.siteModel.siteName )
 this.siteService.savesite(this.siteModel).subscribe((res:any)=>
 {
   console.log(res)
+  this.allValueList=[];
+  this.siteAttribute=new SiteAttribute()
+  this.siteModel=new SiteModel()
+},err=>
+{
+  
 })
 }
 }
