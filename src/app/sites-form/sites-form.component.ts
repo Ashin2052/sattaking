@@ -18,25 +18,39 @@ export class SitesFormComponent implements OnInit {
 
   ngOnInit() {
   }
-  changePlaceName(i, list, event)
-  {
-
-  }
+ 
   mode()
   {
-    
-  }
-  updateSlotNmae(i, list, event)
-  {
+    if(this.siteAttribute.place && this.siteAttribute.value)
+    {
+      this.allValueList.push(this.siteAttribute)
+      this.siteAttribute=new SiteAttribute();
+    }
+    else
+    {
+
+    }
 
   }
-  changeValue(i, list, $event)
+  updatePlaceName(i, list, event)
   {
+ const editField = event.target.textContent;
+    this.allValueList[i].place = editField;
+  }
+  changePlaceName(i, list, event)
+  {
+    const editField = event.target.textContent;
 
   }
-  updateValue(i, list, $event)
+  changeValue(i, list, event)
   {
+    const editField = event.target.textContent;
 
+  }
+  updateValue(i, list, event)
+  {
+    const editField = event.target.textContent;
+    this.allValueList[i].value = editField;
   }
   deleteValue(i)
   {
