@@ -21,6 +21,9 @@ import { PlacelistformComponent } from './placelistform/placelistform.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth.guard';
+import { SitesComponent } from './sites/sites.component';
+import { SitesFormComponent } from './sites-form/sites-form.component';
+import { ValuesComponent } from './values/values.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { AuthGuardService } from './auth/auth.guard';
     PlaceListComponent,
     PlacelistformComponent,
     NavbarComponent,
+    SitesComponent,
+    SitesFormComponent,
+    ValuesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <!-- Content here -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> {{ urlId ? "Update " : "Add " }}
+      Places
+
+    </div>
+    <div class="card-body">
+      <div class="col-md-6">
+        <input type="text" class="form-control " id="elementsName" placeholder="Enter sites Name"
+          [(ngModel)]="siteModel.siteName" name="siteName">
+      </div>
+      <div style="position: relative;top: 5px;" >
+        <table class="table">
+          <thead class="thead-dark">
+           <tr>
+             <th scope="col">Place Name</th>
+             <th scope="col"> value</th>
+
+           </tr>
+         </thead>
+         <tbody>
+           <tr
+             *ngFor="let list of allValueList; let i = index"
+           >
+             <td >
+               <input
+               class="form-control"
+               contenteditable="true"
+               (keyup)="changePlaceName(i, list, $event)"
+               (blur)="updateSlotNmae(i, list, $event)"
+               [(ngModel)]="allValueList[i].placeName"
+                name="placeName"
+             >
+             </td>
+           
+             <td>
+           
+              <input
+              class="form-control"
+              contenteditable="true"
+              (keyup)="changeValue(i, list, $event)"
+              (blur)="updateValue(i, list, $event)"
+              [(ngModel)]="allValueList[i].value"
+               name="value"
+            >
+              
+             </td >
+            
+             <label for="'tabUttr' + list.slotName">
+               <i id="delSl"
+               class="fas fa-trash-alt"
+               style="font-size:22px;width: 10%;position: relative;top: 19px;left: -9px;"
+               (click)="deleteValue(i)"
+             ></i>
+             </label>
+           
+           </tr>
+         </tbody>
+       </table>
+       </div>
+       <form>
+        <div class="form-row">
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the place name"
+              [(ngModel)]="siteAttribute.place"
+              name="place"
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the  value"
+              [(ngModel)]="siteAttribute.value"
+              name="place"
+            />
+          </div>
+          <button (click)="mode()">
+            <i class="fas fa-plus" ></i>
+          </button>
+        </div>
+        <div class=" d-flex  justify-content-center " style="position: relative;top: 5px;right: 60px;">
+          <button
+            style="
+             width: 90px;
+            position: relative;"
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancelSite()"
+          >
+            Cancel
+          </button>
+          <button
+          style=" width: 90px; margin-left: 4px;"
+            type="button"
+            class="btn btn-primary"
+            (click)="saveSite()"
+          >
+            {{ urlId ? "Update " : "Save " }}
+          </button>
+        </div>
+          </form>
+       <div>
+       </div>
+      
+    </div>
+  </div>
+</div>

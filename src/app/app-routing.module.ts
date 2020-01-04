@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { PlaceListComponent } from './place-list/place-list.component';
 import { PlacelistformComponent } from './placelistform/placelistform.component';
+import { SitesComponent } from './sites/sites.component';
+import { SitesFormComponent } from './sites-form/sites-form.component';
+import { ValuesComponent } from './values/values.component';
 const routes: Routes = [
   {
     path:'',
@@ -38,8 +41,29 @@ const routes: Routes = [
     path:'placeadd/:id',
     canActivate:[AuthGuard],
     component:PlacelistformComponent
-  }
-
+  },
+  {
+    path:'sites',
+    canActivate:[AuthGuard],
+    component:SitesComponent
+  },
+  {
+  path:'siteAdd/:id',
+  canActivate:[AuthGuard],
+  component:SitesFormComponent
+  },
+  
+    {
+      path:'siteAdd',
+      canActivate:[AuthGuard],
+      component:SitesFormComponent
+      },
+      {
+        path:'values',
+        canActivate:[AuthGuard],
+        component:ValuesComponent
+        }
+  
 ];
 
 @NgModule({
