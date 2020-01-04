@@ -117,7 +117,7 @@ this.siteService.savesite(this.siteModel).subscribe((res:any)=>
   this.siteModel=new SiteModel()
 },err=>
 {
-  
+
 })
 }
 }
