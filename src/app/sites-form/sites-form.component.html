@@ -26,14 +26,20 @@
              *ngFor="let list of allValueList; let i = index"
            >
              <td >
-               <input
-               class="form-control"
-               contenteditable="true"
-               (keyup)="changePlaceName(i, list, $event)"
-               (blur)="updateSlotNmae(i, list, $event)"
-               [(ngModel)]="allValueList[i].place"
-                name="place"
-             >
+              <select
+              name="entity"
+              class="form-control"
+              value="{{ list.place }}"
+              [(ngModel)]="list.place"
+              (change)="updatedPlace($event, i)"
+            >
+              <option
+                *ngFor="let name of placeList"
+                value="{{ name }}"
+              >
+                {{ name }}
+              </option>
+            </select>
              </td>
            
              <td>
@@ -64,13 +70,24 @@
        <form>
         <div class="form-row">
           <div class="col-md-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter the place name"
-              [(ngModel)]="siteAttribute.place"
-              name="place"
-            />
+            <select
+                      required
+                      required
+                      id="entity"
+                      class="form-control"
+                      [(ngModel)]="siteAttribute.place"
+                      name="place"
+                    >
+                      <option [value]="undefined" disabled selected>
+                        Select place 
+                      </option>
+                      <option
+                        *ngFor="let name of placeList"
+                        value="{{ name }}"
+                      >
+                        {{ name }}
+                      </option>
+                    </select>
           </div>
           <div class="col-md-3">
             <input
