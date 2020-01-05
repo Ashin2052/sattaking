@@ -1,3 +1,7 @@
+#editdSite
+{color: bisque;
+}
+
 #editdSite:hover
 {
 cursor: pointer;
@@ -66,4 +70,7 @@ color: grey;
     }
     
     
-    
+    #trash:hover
+    {
+cursor: pointer;
+    }

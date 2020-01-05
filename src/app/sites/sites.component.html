@@ -38,7 +38,7 @@
 
               <div class=" princing-item red">
                 <div class="pricing-divider ">
-                  <h1 (click)="editPlace(list)" id="editdSite">{{list.siteName}} </h1>
+                  <h1 (click)="editPlace(list)" id="editdSite">{{list.siteName}} </h1> <i class="fa fa-trash" id="trash"  style="font-size:x-large;" (click)="delete(list,i)"></i>
                   <svg class='pricing-divider-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1'
                     preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px'
                     xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'
