@@ -5,7 +5,9 @@
   </div>
 
   <div class="card-group">
-    <div class="col-md-4" *ngFor="let list of allSiteList; let j = index">
+    <div class="col-md-4" *ngFor="let list of allSiteList | paginate: { itemsPerPage: 9, currentPage: p };
+    let i = index
+  ">
 
       <div class="card">
 
@@ -78,12 +80,16 @@
                   </tbody>
 
                   </table>
+                
 </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+       
       </div>
-
+   
     </div>
+    <pagination-controls (pageChange)="p = $event" style="text-align: center;">
+    </pagination-controls>

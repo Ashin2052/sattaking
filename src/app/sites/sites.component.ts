@@ -9,6 +9,8 @@ import { SiteServicesService } from '../services/site-services.service';
 })
 export class SitesComponent implements OnInit {
   allSiteList=[]
+  p: number = 1;
+
   constructor(private siteService:SiteServicesService,private router:Router ) { }
 
   ngOnInit() {
