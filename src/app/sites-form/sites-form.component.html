@@ -33,6 +33,9 @@
               [(ngModel)]="list.place"
               (change)="updatedPlace($event, i)"
             >
+            <option [value]="undefined" disabled selected>
+              Select place 
+            </option>
               <option
                 *ngFor="let name of placeList"
                 value="{{ name }}"
@@ -40,7 +43,38 @@
                 {{ name }}
               </option>
             </select>
+            <!-- <select
+            name="entity"
+            class="form-control"
+            value="{{ list.type }}"
+            [(ngModel)]="list.type"
+            (change)="updatedEntity($event, i)"
+          >
+            <option
+              *ngFor="let name of entityvalues"
+              value="{{ name }}"
+            >
+              {{ name }}
+            </option>
+          </select> -->
              </td>
+             <!-- <select
+             style="width: 100%;"
+             name="SlotType"
+             class="form-control"
+             value="{{ storyModel.storyType }}"
+             [(ngModel)]="storyModel.storyType"
+           >
+           <option [value]="undefined" disabled selected>
+             Select Story Type
+           </option>
+             <option
+               *ngFor="let name of storyValues"
+               value="{{ name }}"
+             >
+               {{ name }}
+             </option>
+ </select> -->
            
              <td>
            
@@ -109,7 +143,8 @@
             position: relative;"
             type="button"
             class="btn btn-secondary"
-            (click)="cancelSite()"
+            (click)="cancelSite()
+            "
           >
             Cancel
           </button>

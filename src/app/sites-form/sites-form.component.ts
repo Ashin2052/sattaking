@@ -54,16 +54,7 @@ export class SitesFormComponent implements OnInit {
     }
 
   }
-  updatePlaceName(i, list, event)
-  {
- const editField = event.target.textContent;
-    this.allValueList[i].place = editField;
-  }
-  changePlaceName(i, list, event)
-  {
-    const editField = event.target.textContent;
-
-  }
+  
   changeValue(i, list, event)
   {
     const editField = event.target.textContent;
@@ -76,7 +67,7 @@ export class SitesFormComponent implements OnInit {
   }
   updatedPlace(event, i)
   {
-    this.allValueList[i].place = event.srcElement.place
+    this.allValueList[i].place = event.srcElement.value
 
   }
   deleteValue(i)
@@ -86,7 +77,11 @@ export class SitesFormComponent implements OnInit {
   }
 cancelSite()
 {
-
+  this.router.navigateByUrl('sites')
+  this.allValueList=<any>[];
+  this.siteModel=new SiteModel();
+  this.placeSameError=false;
+  this.siteAttribute=new SiteAttribute()
 }
 checKplace()
 {
