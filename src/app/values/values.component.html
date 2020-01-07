@@ -6,9 +6,9 @@
   <div class="card-body">
     <form class="row">
       <div class="col">
-        <select required id="plcae" class="form-control" [(ngModel)]="values.placeName" name="entity">
+        <select required id="plcae" class="form-control"  name="placeName" (change)="onChange($event)">
           <option [ngValue]="undefined" disabled selected> Select Place </option>
-          <option *ngFor="let name of placeName" value="{{ name }}">
+          <option *ngFor="let name of placeList" [value]=" name">
             {{ name }}
           </option>
 
@@ -22,5 +22,29 @@
         <button (click)="modo()"><i class="fas fa-plus"></i></button>
       </div>
   </form>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+       <TH>
+         Place Name
+       </TH>
+       <th>
+        Value
+       </th>
+       <th>
+      Created On
+       </th>
+       <th>
+         Delete
+       </th>
+     
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+        </tr>
+      </tbody>
+      </table>
 </div>
 </div>

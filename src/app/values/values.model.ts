@@ -1,4 +1,5 @@
 export class Values{
 placeName:string;
-placeValue:string
+placeValue:string;
+uploadedTime:number
 }

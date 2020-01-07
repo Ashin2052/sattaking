@@ -157,7 +157,7 @@ if(this.placeSameError)
 if(this.siteModel.siteName )
 {
   this.siteModel.siteValue=this.allValueList;
-  this.siteModel.uploadedTime=moment(new Date()).format('X')
+  this.siteModel.uploadedTime=Number(moment(new Date()).format('X'))
     //  this.siteModel.uploadedTime=moment(new Date()).subtract(1,'day').format('X')
 
 this.siteService.savesite(this.siteModel).subscribe((res:any)=>
