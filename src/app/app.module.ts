@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { MomentModule } from 'ngx-moment';
+
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +43,8 @@ import { ValuesComponent } from './values/values.component';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,MomentModule,
+
     HttpClientModule,
     FormsModule,
     AppRoutingModule,BrowserAnimationsModule,

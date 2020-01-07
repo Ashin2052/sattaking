@@ -1,4 +1,6 @@
 export class SiteModel{
     siteName:string;
-    siteValue:[object]
+    siteValue:[object];
+    uploadedTime:string;
+
 }

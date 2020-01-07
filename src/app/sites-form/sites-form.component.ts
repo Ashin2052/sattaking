@@ -4,6 +4,7 @@ import { SiteAttribute } from './setAttbr';
 import { SiteServicesService } from '../services/site-services.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import {ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import * as moment  from 'moment';
 
 
 SiteModel
@@ -24,6 +25,7 @@ export class SitesFormComponent implements OnInit {
   constructor(private activateRoute:ActivatedRoute, private toastr:ToastrService,private siteService:SiteServicesService,private router:Router ) { }
 
   ngOnInit() {
+    console.log(moment(new Date()).format('DD-MM-YYY'))
     this.urlId=this.activateRoute.snapshot.paramMap.get('id')
     if(this.urlId && (typeof(this.urlId))!="undefined")
 {
@@ -123,6 +125,7 @@ if(this.placeSameError)
 if(this.siteModel.siteName )
 {
   this.siteModel.siteValue=this.allValueList;
+ 
 this.siteService.updatesite(this.urlId,this.siteModel).subscribe((res:any)=>
 {
   console.log(res)
@@ -151,6 +154,9 @@ if(this.placeSameError)
 if(this.siteModel.siteName )
 {
   this.siteModel.siteValue=this.allValueList;
+  this.siteModel.uploadedTime=moment(new Date()).format('X')
+    //  this.siteModel.uploadedTime=moment(new Date()).subtract(1,'day').format('X')
+
 this.siteService.savesite(this.siteModel).subscribe((res:any)=>
 {
   this.router.navigateByUrl('sites')
