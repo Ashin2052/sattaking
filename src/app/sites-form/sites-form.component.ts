@@ -26,6 +26,9 @@ export class SitesFormComponent implements OnInit {
 
   ngOnInit() {
     console.log(moment(new Date()).format('DD-MM-YYY'))
+    console.log(moment().startOf('day').format('x'));
+    console.log(moment().endOf('day').format('x'));
+
     this.urlId=this.activateRoute.snapshot.paramMap.get('id')
     if(this.urlId && (typeof(this.urlId))!="undefined")
 {
