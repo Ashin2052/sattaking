@@ -22,7 +22,16 @@ savevalue(value,startDay,endDay)
     })
   });
 }
-
+checkTodayValue(startDay,endDay)
+{
+  var finalUrl=this.baseUrl+"startEnd?startDay="+startDay+'&&endDay='+endDay;
+  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+  return this.httpClient.get(finalUrl,{
+    headers:new HttpHeaders({
+      Authorization:this.sattaToken
+    })
+  }); 
+}
 deletevalue(id)
 {
   this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken

@@ -12,27 +12,57 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class ValuesComponent implements OnInit {
 values=new Values();
+p: number = 1;
 placeList=[]
 valueTable=[]
 endDay:number;
+savedResponse=[];
 startDay:number;
   constructor(private placeServiceService:PlaceServiceService,private valueServiceService:ValueServiceService) { }
 
   ngOnInit() {
-    this.getAllPlace()
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
-  }
+    this.checkTodayValue()
+    // this.getAllPlace()
 
+
+  }
+ checkTodayValue()
+{
+  this.valueServiceService.checkTodayValue(this.startDay,this.endDay).subscribe((response:any)=>
+  {
+    if(response && response.length>1)
+    {
+      this.valueTable=response;
+      return;
+    }
+    else
+    {
+      this.getAllPlace()
+    }
+  })
+}
   getAllPlace()
   {
     this.placeServiceService.getAllPlace().subscribe((response:any)=>
-    {
+    { 
       response.forEach(element => {
-        this.placeList.push(element.placeName)
-        
+        this.values.placeName=element.placeName
+        this.values.placeValue='XX';
+        this.values.uploadedTime=Number(moment().format('x'))
+ 
+        this.valueServiceService.savevalue(this.values,this.startDay,this.endDay).subscribe((response:any)=>
+        {
+          
+        })
       });
+    },err=>
+    {
+      return;
     })
+ 
+
   }
   onChange(event:any)
   {

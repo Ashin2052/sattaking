@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <form class="row">
-      <div class="col">
+      <!-- <div class="col">
         <select required id="plcae" class="form-control"  name="placeName" (change)="onChange($event)">
           <option [ngValue]="undefined" disabled selected> Select Place </option>
           <option *ngFor="let name of placeList" [value]=" name">
@@ -13,7 +13,7 @@
           </option>
 
         </select>
-      </div>
+      </div> -->
       <div class="col">
         <input type="text" class="form-control" placeholder="Enter the value " [(ngModel)]="values.placeValue"
           name="placeValue" />
@@ -25,6 +25,9 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
+        <th>
+          SN.
+        </th>
        <TH>
          Place Name
        </TH>
@@ -32,17 +35,32 @@
         Value
        </th>
        <th>
-      Created On
+      Updated On
        </th>
        <th>
-         Delete
+         Update
        </th>
      
-      </tr>
+      </tr> 
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let list of valueTable | paginate: { itemsPerPage: 30, currentPage: p };
+        let i = index">
 
+        <th scope="row">{{ 30 * (p - 1) + i + 1 }}</th>
+
+<td>
+{{  list.placeName}}
+</td>
+<td>
+  {{list.placeValue}}
+</td>
+<td>
+  {{list.updatedAt  |  amDateFormat:'lll'}}
+</td>
+<td>
+  <i class="fas fa-edit"></i>
+</td>
         </tr>
       </tbody>
       </table>
