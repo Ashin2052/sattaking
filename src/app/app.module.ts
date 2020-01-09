@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,9 +26,11 @@ import { AuthGuardService } from './auth/auth.guard';
 import { SitesComponent } from './sites/sites.component';
 import { SitesFormComponent } from './sites-form/sites-form.component';
 import { ValuesComponent } from './values/values.component';
+import { ValuesfromComponent } from './valuesfrom/valuesfrom.component';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     FormsComponent,
     HeaderComponent,
@@ -40,12 +43,14 @@ import { ValuesComponent } from './values/values.component';
     SitesComponent,
     SitesFormComponent,
     ValuesComponent,
+    ValuesfromComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,MomentModule,
 
     HttpClientModule,
+    NgbModule,
     FormsModule,
     AppRoutingModule,BrowserAnimationsModule,
     ToastrModule.forRoot({

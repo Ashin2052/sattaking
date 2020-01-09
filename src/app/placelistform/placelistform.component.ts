@@ -1,10 +1,13 @@
 import { EventEmitter, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm, FormControl } from '@angular/forms';
 import {ToastContainerDirective, ToastrService } from 'ngx-toastr';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlaceServiceService } from '../services/place-service.service';
 import { PlaceModel } from './place.model';
+import { ValueServiceService } from '../services/value-service.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Values } from '../values/values.model';
+import * as moment  from 'moment';
 declare var $: any;
 
 @Component({
@@ -15,18 +18,20 @@ declare var $: any;
 export class PlacelistformComponent implements OnInit {
   urlId;
   submitted: boolean = false;
-
+  startDay:number;
+endDay:number;
   placeModel=new PlaceModel()
   placeAddForm: FormGroup;
   @ViewChild("createPlace", { static: false }) formData: NgForm;
   @ViewChild(ToastContainerDirective, {static: false}) toastContainer: ToastContainerDirective;
 
-  constructor( private toastr: ToastrService,private router: Router,private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
+  constructor(private ValueServiceService:ValueServiceService, private toastr: ToastrService,private router: Router,private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
   
 
   ngOnInit() {
     this.toastr.overlayContainer = this.toastContainer;
-
+    this.startDay=Number(moment().startOf('day').format('x'))
+    this.endDay=Number(moment().endOf('day').format('x'))
     this.placeAddForm = this.formBuilder.group({
       placeName: ['', <any>Validators.required],
       placeAbbvr: ['', <any>Validators.required],
@@ -93,6 +98,7 @@ update()
     {
       this.placeService.savePlace(this.placeModel).subscribe((response):any=>{
        this.router.navigateByUrl('admin')
+       this.addPlaceValue(response)
        this.toastr.success("Place successfully saved")
       },err=>
       {
@@ -100,6 +106,17 @@ update()
       })
     }
 
+  }
+  addPlaceValue(response)
+  {
+var valu=new Values()
+valu.placeName=response.placeName;
+valu.placeValue='XX'
+valu.uploadedTime=Number(moment().format('x'))
+this.ValueServiceService.savevalue(valu,this.startDay,this.endDay).subscribe((response:any)=>
+{
+  
+})
   }
   cancelStory()
   {

@@ -4,6 +4,7 @@ import { PlaceServiceService } from '../services/place-service.service';
 import { ValueServiceService } from '../services/value-service.service';
 import * as moment  from 'moment';
 import { ThrowStmt } from '@angular/compiler';
+declare var $: any;
 
 @Component({
   selector: 'app-values',
@@ -12,6 +13,10 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class ValuesComponent implements OnInit {
 values=new Values();
+editValue;
+upVal;
+tableIndex;
+updateId;
 p: number = 1;
 placeList=[]
 valueTable=[]
@@ -23,6 +28,7 @@ startDay:number;
   ngOnInit() {
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
+    console.log(moment().format('x'))
     this.checkTodayValue()
     // this.getAllPlace()
 
@@ -43,6 +49,16 @@ startDay:number;
     }
   })
 }
+
+receivedData(newData) {
+  let index = this.valueTable.findIndex(x => x._id == newData._id);
+  if (index == -1) {
+    this.valueTable.push(newData);
+  } else {
+    this.valueTable[index] = newData;
+  }
+
+}
   getAllPlace()
   {
     this.placeServiceService.getAllPlace().subscribe((response:any)=>
@@ -54,7 +70,7 @@ startDay:number;
  
         this.valueServiceService.savevalue(this.values,this.startDay,this.endDay).subscribe((response:any)=>
         {
-          
+          this.valueTable.push(response)
         })
       });
     },err=>
@@ -84,4 +100,16 @@ modo()
   }
 
 }
+updateValue(list,i)
+{
+    
+    this.editValue = { ...list };
+    $('#exampleModal').modal({
+      show: true, 
+      backdrop: 'static',
+      keyboard: true
+   })
+}
+
+
 }
