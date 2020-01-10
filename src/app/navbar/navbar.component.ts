@@ -7,11 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+hShow:boolean=false;
   constructor(private router: Router) { }
 
   ngOnInit() {
-  }
+    var token=localStorage.getItem('sattaToken')
+    if(token)
+
+{
+  this.hShow=true;
+} 
+ }
 
   logOut()
   {
