@@ -12,6 +12,7 @@ declare var $: any;
   styleUrls: ['./values.component.css']
 })
 export class ValuesComponent implements OnInit {
+  allPlaceCount:number;
 values=new Values();
 editValue;
 upVal;
@@ -29,25 +30,45 @@ startDay:number;
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
     console.log(moment().format('x'))
-    this.checkTodayValue()
+    console.log(this.startDay,this.endDay)
+    this.getPlaceLength();
     // this.getAllPlace()
 
 
   }
+  getPlaceLength()
+{
+  this.placeServiceService.getAllPlace().subscribe((response:any)=>
+  {
+this.allPlaceCount=response.length;
+this.checkTodayValue()
+
+  })
+}
+
  checkTodayValue()
 {
   this.valueServiceService.checkTodayValue(this.startDay,this.endDay).subscribe((response:any)=>
   {
-    if(response && response.length>1)
-    {
-      this.valueTable=response;
-      return;
+    console.log(response.length,this.allPlaceCount)
+    if (response === undefined || response.length == 0) {
+this.getAllPlace()
+return;
+}
+else
+{
+    if( response.length<this.getPlaceLength)
+    { 
+      this.getAllPlace()
     }
     else
     {
-      this.getAllPlace()
+      console.log(response.length,this.allPlaceCount)
+      this.valueTable=response;
+      return;
     }
-  })
+  }
+})
 }
 
 receivedData(newData) {
@@ -63,6 +84,7 @@ receivedData(newData) {
   {
     this.placeServiceService.getAllPlace().subscribe((response:any)=>
     { 
+     
       response.forEach(element => {
         this.values.placeName=element.placeName
         this.values.placeValue='XX';
@@ -110,6 +132,14 @@ updateValue(list,i)
       keyboard: true
    })
 }
+ngOnDestroy()	
+{
 
+  this.valueTable=[]
+this.values=new Values();
+this.savedResponse=[];
+
+
+}
 
 }
