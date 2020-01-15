@@ -27,11 +27,13 @@ import { SitesComponent } from './sites/sites.component';
 import { SitesFormComponent } from './sites-form/sites-form.component';
 import { ValuesComponent } from './values/values.component';
 import { ValuesfromComponent } from './valuesfrom/valuesfrom.component';
+import { CalenderComponent } from './calender/calender/calender.component';
 
 @NgModule({
   declarations: [
 
     AppComponent,
+    CalenderComponent,
     FormsComponent,
     HeaderComponent,
     LoginComponent,

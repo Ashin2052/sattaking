@@ -48,13 +48,8 @@ updatePlace(id,value)
 
   getAllPlace()
   {
-    this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-
-    return this.httpClient.get(this.baseUrl,{
-      headers:new HttpHeaders({
-        Authorization:this.sattaToken
-      })
-    });
+console.log(this.baseUrl)
+    return this.httpClient.get(this.baseUrl);
   }
 
 getParticularPlace(id)

@@ -23,7 +23,7 @@
       <th scope="row">{{ 30 * (p - 1) + i + 1 }}</th>
       <td>{{list.placeName}}</td>
       <td>{{list.placeAbbvr}}</td>
-      <td>{{list.placeTime |  amDateFormat:'lll'}}</td>
+      <td>{{list.placeTime |   amDateFormat:'lll'}}</td>
       <td>
         <a
           (click)="editBind(list)"

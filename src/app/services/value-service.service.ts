@@ -10,70 +10,45 @@ export class ValueServiceService {
   constructor(private httpClient: HttpClient) { }
 
   baseUrl=environment.baseUrl+'/rest/v1/value/';
-  sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+  sattaToken :any;
 
 savevalue(value,startDay,endDay)
 {
   var finalUrl=this.baseUrl+"startEnd?startDay="+startDay+'&&endDay='+endDay;
-  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-  return this.httpClient.post(finalUrl,value,{
-    headers:new HttpHeaders({
-      Authorization:this.sattaToken
-    })
-  });
+ 
+
+  
+  return this.httpClient.post(finalUrl,value,);
 }
 checkTodayValue(startDay,endDay)
 {
   var finalUrl=this.baseUrl+"startEnd?startDay="+startDay+'&&endDay='+endDay;
-  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-  return this.httpClient.get(finalUrl,{
-    headers:new HttpHeaders({
-      Authorization:this.sattaToken
-    })
-  }); 
+  return this.httpClient.get(finalUrl); 
 }
 deletevalue(id)
 {
-  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-
-  return this.httpClient.delete(this.baseUrl+id,{
-    headers:new HttpHeaders({
-      Authorization:this.sattaToken
-    })
-  });
+ if(localStorage.getItem('sattaToken'))
+ 
+  return this.httpClient.delete(this.baseUrl+id);
 }
 
 updatevalue(id,value)
 {
-  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
-  return this.httpClient.put(this.baseUrl+id,value,{
-    headers:new HttpHeaders({
-      Authorization:this.sattaToken
-    })
-  });
+  return this.httpClient.put(this.baseUrl+id,value);
 }
 
 
 
   getAllvalue()
   {
-    this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-
-    return this.httpClient.get(this.baseUrl,{
-      headers:new HttpHeaders({
-        Authorization:this.sattaToken
-      })
-    });
+   if(localStorage.getItem('sattaToken'))
+ 
+    return this.httpClient.get(this.baseUrl);
   }
 
 getParticularvalue(id)
 {
-  this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
-
-  return this.httpClient.get(this.baseUrl+id,{
-    headers:new HttpHeaders({
-      Authorization:this.sattaToken
-    })
-  });
+ 
+  return this.httpClient.get(this.baseUrl+id);
 }}
