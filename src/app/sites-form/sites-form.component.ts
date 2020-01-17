@@ -39,6 +39,7 @@ export class SitesFormComponent implements OnInit {
   }
   getInfoForUpdate()
   {
+  
     this.siteService.getParticularsite(this.urlId).subscribe((response:any)=>
     {
       this.siteModel.siteName=response.siteName;
@@ -157,7 +158,7 @@ if(this.placeSameError)
 if(this.siteModel.siteName )
 {
   this.siteModel.siteValue=this.allValueList;
-  this.siteModel.uploadedTime=Number(moment(new Date()).format('X'))
+  this.siteModel.uploadedTime=Number(moment().format('x'))
     //  this.siteModel.uploadedTime=moment(new Date()).subtract(1,'day').format('X')
 
 this.siteService.savesite(this.siteModel).subscribe((res:any)=>

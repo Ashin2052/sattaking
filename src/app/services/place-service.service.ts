@@ -7,8 +7,8 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
 })
 export class PlaceServiceService {
 
-  baseUrl=environment.baseUrl+'/rest/v1/place/';
-  sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+  baseUrl=environment.baseUrl+'rest/v1/place/';
+  sattaToken:any;
   constructor(private httpClient: HttpClient) { }
 
 savePlace(place)

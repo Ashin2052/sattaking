@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ServicesService {
-  baseUrl=environment.baseUrl+'/rest/v1/';
+  baseUrl=environment.baseUrl+'rest/v1/';
 
   constructor(private httpClient: HttpClient) { }
 

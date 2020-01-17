@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class SiteServicesService {
 
-  baseUrl=environment.baseUrl+'/rest/v1/site/';
-  sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+  baseUrl=environment.baseUrl+'rest/v1/site/';
+  sattaToken:any;
   constructor(private httpClient: HttpClient) { }
 
 savesite(site)
@@ -66,5 +66,14 @@ getParticularsite(id)
       Authorization:this.sattaToken
     })
   });
+}
+
+getTodaySiteValue(startDay,endDay)
+{
+  console.log(startDay,endDay)
+  var finalUrl=this.baseUrl+"allTodaySiteValues?startDay="+startDay+'&&endDay='+endDay;
+
+  return this.httpClient.get(finalUrl);
+
 }
 }

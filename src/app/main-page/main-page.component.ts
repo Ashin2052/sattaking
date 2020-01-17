@@ -12,6 +12,7 @@ import { Values } from '../values/values.model';
 })
 export class MainPageComponent implements OnInit {
   todayTable=[];
+  todaySiteList=[]
   values=new Values()
   allPlaceCount:number;
   yesTerdayTable=[]
@@ -38,7 +39,9 @@ yesterdayEndDate:any
 
     console.log(this.yesterdayStartDate,this.yesterdayEndDate)
     this.getAllPlaceCount()
-  
+    
+  this.getTodaySiteList()
+
   }
 
 getAllPlaceCount()
@@ -102,7 +105,14 @@ this.getYesterdayList()
       this.yesTerdayTable=response;
     })
   }
-  
+  getTodaySiteList()
+  {
+    this.siteService.getTodaySiteValue(this.startDay,this.endDay).subscribe((response:any)=>
+    {
+      this.todaySiteList=response
+      console.log(response,"fas")
+    })
+  }
   ngOnDestroy()	
   {
 this.getAllPlaceCount=null;

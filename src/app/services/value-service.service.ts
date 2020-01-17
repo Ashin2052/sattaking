@@ -9,7 +9,7 @@ export class ValueServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl=environment.baseUrl+'/rest/v1/value/';
+  baseUrl=environment.baseUrl+'rest/v1/value/';
   sattaToken :any;
 
 savevalue(value,startDay,endDay)

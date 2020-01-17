@@ -28,6 +28,7 @@ import { SitesFormComponent } from './sites-form/sites-form.component';
 import { ValuesComponent } from './values/values.component';
 import { ValuesfromComponent } from './valuesfrom/valuesfrom.component';
 import { CalenderComponent } from './calender/calender/calender.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CalenderComponent } from './calender/calender/calender.component';
     SitesFormComponent,
     ValuesComponent,
     ValuesfromComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
