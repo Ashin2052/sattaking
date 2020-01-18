@@ -4,6 +4,8 @@ import { ValueServiceService } from '../services/value-service.service';
 import { SiteServicesService } from '../services/site-services.service';
 import { PlaceServiceService } from '../services/place-service.service';
 import { Values } from '../values/values.model';
+import 'moment/locale/de';
+
 
 @Component({
   selector: 'app-main-page',
@@ -122,5 +124,18 @@ this.values=new Values();
 this.savedResponse=[];
 
 
+}
+
+selectedYearAsText: string;
+selectedMonthIndex: string;
+selectedMonthAsText: string;
+
+onChange(event: { monthIndex: number, year: number }) {
+  
+  this.selectedYearAsText = event.year.toString();
+  this.selectedMonthIndex = event.monthIndex.toString();
+  this.selectedMonthAsText = moment().month(event.monthIndex).format('MMMM');
+ console.log(moment(this.selectedYearAsText,this.selectedMonthIndex).format('YY-MM'))
+  console.warn(this.selectedYearAsText, this.selectedMonthAsText, `(month index: ${this.selectedMonthIndex})`);
 }
 }

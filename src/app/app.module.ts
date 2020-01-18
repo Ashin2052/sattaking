@@ -29,6 +29,7 @@ import { ValuesComponent } from './values/values.component';
 import { ValuesfromComponent } from './valuesfrom/valuesfrom.component';
 import { CalenderComponent } from './calender/calender/calender.component';
 import { FooterComponent } from './footer/footer.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FooterComponent } from './footer/footer.component';
     ValuesComponent,
     ValuesfromComponent,
     FooterComponent,
+    DatepickerComponent,
   ],
   imports: [
     BrowserModule,
