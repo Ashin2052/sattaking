@@ -126,16 +126,28 @@ this.savedResponse=[];
 
 }
 
-selectedYearAsText: string;
-selectedMonthIndex: string;
-selectedMonthAsText: string;
+selectedYearAsText: number;
+selectedMonthIndex: number;
+ endOfMonth:number;
 
 onChange(event: { monthIndex: number, year: number }) {
-  
-  this.selectedYearAsText = event.year.toString();
-  this.selectedMonthIndex = event.monthIndex.toString();
-  this.selectedMonthAsText = moment().month(event.monthIndex).format('MMMM');
- console.log(moment(this.selectedYearAsText,this.selectedMonthIndex).format('YY-MM'))
-  console.warn(this.selectedYearAsText, this.selectedMonthAsText, `(month index: ${this.selectedMonthIndex})`);
+  this.endOfMonth=30;
+  this.selectedYearAsText = event.year
+  this.selectedMonthIndex = event.monthIndex;
+if(this.selectedMonthIndex==1)
+{
+  this.endOfMonth=28;
+}
+else if(this.selectedMonthIndex%2==0)
+{
+  this.endOfMonth=31;
+}
+else
+{
+  this.endOfMonth=30;
+}
+var startofMonth=moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,1)).format('x')
+var endofM=moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,this.endOfMonth)).format('x')
+console.log(startofMonth,endofM,"jkj")
 }
 }
