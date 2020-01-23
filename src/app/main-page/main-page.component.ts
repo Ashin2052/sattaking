@@ -129,7 +129,8 @@ this.savedResponse=[];
 selectedYearAsText: number;
 selectedMonthIndex: number;
  endOfMonth:number;
-
+ startofMonth:number;
+ endofM:number;
 onChange(event: { monthIndex: number, year: number }) {
   this.endOfMonth=30;
   this.selectedYearAsText = event.year
@@ -146,8 +147,12 @@ else
 {
   this.endOfMonth=30;
 }
-var startofMonth=moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,1)).format('x')
-var endofM=moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,this.endOfMonth)).format('x')
-console.log(startofMonth,endofM,"jkj")
+ this.startofMonth=Number(moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,1)).format('x'))
+this.endofM=Number(moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,this.endOfMonth)).format('x'))
+console.log(this.startofMonth,this.endofM,"jkj")
+}
+SearchByMonth()
+{
+
 }
 }

@@ -39,11 +39,10 @@ export class ValuesfromComponent implements OnInit {
   })
   }
 
-  cancelV()
+ 
+  cancelv()
   {
     $("#exampleModal").modal("hide");
     this.newValue=new Values()
-
   }
-
 }

@@ -127,7 +127,15 @@ color: grey;
       -webkit-transform: translate3d(-15px, 0, 0);
       transform: translate3d(-15px, 0, 0);
     }
-    
+    #record{
+      color: blue;
+      text-decoration:underline;
+    }
+    #record:hover
+    {
+      cursor: pointer;
+      text-decoration:underline;
+    }
     
     #trash:hover
     {

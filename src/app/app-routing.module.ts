@@ -12,6 +12,7 @@ import { PlacelistformComponent } from './placelistform/placelistform.component'
 import { SitesComponent } from './sites/sites.component';
 import { SitesFormComponent } from './sites-form/sites-form.component';
 import { ValuesComponent } from './values/values.component';
+import { TableComponentComponent } from './table-component/table-component.component';
 const routes: Routes = [
   {
     path:'',
@@ -21,11 +22,11 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
   },
-  // {
-  //   path:'admin',
-  //   canActivate:[AuthGuard],
-  //   component:AdminComponent
-  // },
+  {
+    path:'table',
+    
+    component:TableComponentComponent
+  },
   {
     path:'admin',
     canActivate:[AuthGuard],
