@@ -153,6 +153,9 @@ console.log(this.startofMonth,this.endofM,"jkj")
 }
 SearchByMonth()
 {
-
+  this.valueServce.monthValue(this.startofMonth,this.endofM).subscribe((response:any)=>
+  {
+    console.log(response)
+  })
 }
 }

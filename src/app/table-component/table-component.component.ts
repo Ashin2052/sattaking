@@ -40,6 +40,7 @@ export class TableComponentComponent implements OnInit {
   
   SearchByMonth()
   {
+    console.log(this.startofMonth,this.endofM,"ggggg")
   
   }
 }

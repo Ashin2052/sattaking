@@ -20,6 +20,12 @@ savevalue(value,startDay,endDay)
   
   return this.httpClient.post(finalUrl,value,);
 }
+monthValue(startOfMonth,endOfM)
+{
+  var finalUrl=this.baseUrl+"getByMonth?startOfMonth="+startOfMonth+'&&endOfM='+endOfM;
+  return this.httpClient.get(finalUrl);
+
+}
 checkTodayValue(startDay,endDay)
 {
   var finalUrl=this.baseUrl+"startEnd?startDay="+startDay+'&&endDay='+endDay;
