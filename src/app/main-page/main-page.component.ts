@@ -5,6 +5,7 @@ import { SiteServicesService } from '../services/site-services.service';
 import { PlaceServiceService } from '../services/place-service.service';
 import { Values } from '../values/values.model';
 import 'moment/locale/de';
+import { MonthValues } from './monthValue';
 
 
 @Component({
@@ -13,6 +14,10 @@ import 'moment/locale/de';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
+  deshawar=[]
+  harion=[]
+  ads=[]
+  monthValue=new MonthValues();
   todayTable=[];
   todaySiteList=[]
   values=new Values()
@@ -155,7 +160,24 @@ SearchByMonth()
 {
   this.valueServce.monthValue(this.startofMonth,this.endofM).subscribe((response:any)=>
   {
-    console.log(response)
+    response.forEach(element => {
+      if(element.placeName=="harion")
+      {
+        this.harion.push(element)
+      }
+      else if(element.placeName=="ads")
+      {
+        this.ads.push(element)
+
+      }
+      else
+      {
+        this.deshawar.push(element)
+
+      }
+      
+    });
+
   })
 }
 }
