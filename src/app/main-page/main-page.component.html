@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="card">
-        <div class="card-header text-danger        ">
+        <div class="card-header text-danger ">
           <i class="fa fa-align-justify"></i> {{today}} Satta King Value
         </div>
         <div class="card-body">
@@ -21,8 +21,8 @@
 
 
                 <tr *ngFor="let list of todayTable">
-                  <td>{{list.placeName}} <a id="record"
-                      style="float: right;position: relative;">Record</a><br>{{list.updatedAt |  date:"HH:mm" }}</td>
+                  <td>{{list.placeName}}-{{list.placeAbbvr}} <a id="record" data-toggle="modal" data-target="#exampleModalCenter"
+                      style="float: right;position: relative;" (click)=sendList(list)>Record</a><br>{{list.updatedAt |  date:"HH:mm" }}</td>
                   <td>{{list.placeValue}}</td>
 
 
@@ -57,8 +57,8 @@
 
               <tbody style="border:1px solid transparent; background-color:white; color:#2a2a2a; text-align: left;">
                 <tr *ngFor="let list of yesTerdayTable">
-                  <td>{{list.placeName}} <a id="record"
-                      style="float: right;position: relative;">Record</a><br>{{list.updatedAt |  date:"HH:mm" }}</td>
+                  <td>{{list.placeName}}-{{list.placeAbbvr}} <a id="record"  data-toggle="modal" data-target="#exampleModalCenter"
+                      style="float: right;position: relative;"  (click)=sendList(list)>Record</a><br>{{list.updatedAt |  date:"HH:mm" }}</td>
                   <td>{{list.placeValue}}</td>
                 </tr>
               </tbody>
@@ -223,7 +223,6 @@
   </div>
 
  
-      
-  
-
-  <app-footer></app-footer>
+    <app-footer></app-footer>
+    <app-place-model   [passedUserValue]="sendName"
+    ></app-place-model>

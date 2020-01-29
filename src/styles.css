@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style fi*/
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 100000 !important;
+}
+#exampleModal{
+  z-index: 120000 !important}
 #toast-container > div {
     opacity:1;
   }
@@ -49,4 +54,3 @@
   .toast-body {
     padding: 0.75rem;
   }
-  

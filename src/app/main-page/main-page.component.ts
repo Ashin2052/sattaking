@@ -6,6 +6,7 @@ import { PlaceServiceService } from '../services/place-service.service';
 import { Values } from '../values/values.model';
 import 'moment/locale/de';
 import { MonthValues } from './monthValue';
+import { SendValue } from './SendValueModel';
 
 
 @Component({
@@ -14,6 +15,12 @@ import { MonthValues } from './monthValue';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
+sendName:string;
+  selectedYearAsText: number;
+selectedMonthIndex: number;
+ endOfMonth:number;
+ startofMonth:number;
+ endofM:number;
   deshawar=[]
   harion=[]
   ads=[]
@@ -37,6 +44,9 @@ yesterdayEndDate:any
     private siteService:SiteServicesService) { }
 
   ngOnInit() {
+    this.startofMonth=Number(moment().startOf('month').format('x'));
+ this.endofM=Number(moment().endOf('month').format('x'))
+ this.SearchByMonth()
     this.yesterdayEndDate=moment().subtract(1, 'days').endOf('day').format('x'); 
     this.yesterdayStartDate=moment().subtract(1, 'days').startOf('day').format('x')
     this.yesterDay=moment().subtract(1, 'days').format('LL'); 
@@ -44,7 +54,7 @@ yesterdayEndDate:any
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
 
-    console.log(this.yesterdayStartDate,this.yesterdayEndDate)
+    // console.log(this.yesterdayStartDate,this.yesterdayEndDate)
     this.getAllPlaceCount()
     
   this.getTodaySiteList()
@@ -78,7 +88,7 @@ this.getYesterdayList()
     }
     else
     {
-      console.log(response.length,this.allPlaceCount)
+      // console.log(response.length,this.allPlaceCount)
       this.todayTable=response;
       return;
     }
@@ -89,6 +99,7 @@ this.getYesterdayList()
     this.placeService.getAllPlace().subscribe((response:any)=>
     { 
       response.forEach(element => {
+        this.values.placeAbbvr=element.placeAbbvr
         this.values.placeName=element.placeName
         this.values.placeValue='XX';
         this.values.uploadedTime=Number(moment().format('x'))
@@ -131,11 +142,7 @@ this.savedResponse=[];
 
 }
 
-selectedYearAsText: number;
-selectedMonthIndex: number;
- endOfMonth:number;
- startofMonth:number;
- endofM:number;
+
 onChange(event: { monthIndex: number, year: number }) {
   this.endOfMonth=30;
   this.selectedYearAsText = event.year
@@ -179,5 +186,10 @@ SearchByMonth()
     });
 
   })
+}
+sendList(list)
+{
+this.sendName=list.placeName;
+
 }
 }

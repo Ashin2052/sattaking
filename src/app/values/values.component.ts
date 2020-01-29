@@ -86,6 +86,7 @@ receivedData(newData) {
     { 
      
       response.forEach(element => {
+        this.values.placeAbbvr=element.placeAbbvr
         this.values.placeName=element.placeName
         this.values.placeValue='XX';
         this.values.uploadedTime=Number(moment().format('x'))

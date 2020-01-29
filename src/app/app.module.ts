@@ -31,6 +31,7 @@ import { CalenderComponent } from './calender/calender/calender.component';
 import { FooterComponent } from './footer/footer.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { TableComponentComponent } from './table-component/table-component.component';
+import { PlaceModelComponent } from './place-model/place-model.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TableComponentComponent } from './table-component/table-component.compo
     FooterComponent,
     DatepickerComponent,
     TableComponentComponent,
+    PlaceModelComponent,
   ],
   imports: [
     BrowserModule,
