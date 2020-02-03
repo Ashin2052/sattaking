@@ -1,143 +1,173 @@
-
-
-
 @media (min-width: 768px) {
-    .h-md-100 { height: 100vh; }
+    .h-md-100 {
+        height: 100vh;
+    }
 }
-.btn-round { border-radius: 30px; }
-.text-cyan { color: #35bdff; }
 
+.btn-round {
+    border-radius: 30px;
+}
+
+.text-cyan {
+    color: #35bdff;
+}
 
 body {
-  background-color:#393939;
+    background-color: #393939;
 }
-
 
 .switch {
-position: relative;
-display: inline-block;
-width: 45px;
-height: 20px;
-vertical-align: middle;
-margin-top: 8px;
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: 8px;
 }
 
-.switch input {display:none;}
+.switch input {
+    display: none;
+}
 
 .slider {
-position: absolute;
-cursor: pointer;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: #A1A6AB;
--webkit-transition: .4s;
-transition: .4s;
-
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #A1A6AB;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 .slider:before {
-position: absolute;
-content: "";
-height: 16px;
-width: 14px;
-left: 2px;
-bottom: 2px;
-background-color: white;
--webkit-transition: .4s;
-transition: .4s;
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-
-
-
-.card
-{
-  background-color:white ;
+.card {
+    background-color: white;
 }
 
+#editdSite:hover {
+    cursor: pointer;
+    color: grey;
+}
 
-
-
-
-#editdSite:hover
-{
-cursor: pointer;
-color: grey;
-}.bg-gradient {
+.bg-gradient {
     background: #C9D6FF;
-    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF); 
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
     background: linear-gradient(to right, #E2E2E2, #C9D6FF);
-    } 
-    ul li {
-      margin-bottom:1.4rem;
-    }
-    .pricing-divider {
+}
+
+ul li {
+    margin-bottom: 1.4rem;
+}
+
+.pricing-divider {
     border-radius: 20px;
     background: #C64545;
     padding: 1em 0 4em;
     position: relative;
-    }
-    .blue .pricing-divider{
-    background: #2D5772; 
-    }
-    .green .pricing-divider {
-    background: #1AA85C; 
-    }
-    .red b {
-      color:#C64545
-    }
-    .blue b {
-      color:#2D5772
-    }
-    .green b {
-      color:#1AA85C
-    }
-    .pricing-divider-img {
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 80px;
-    }
-    .deco-layer {
-        -webkit-transition: -webkit-transform 0.5s;
-        transition: transform 0.5s;
-    }
-    .btn-custom  {
-      background:#C64545; color:#fff; border-radius:20px
-    }
-    
-    .img-float {
-      width:50px; position:absolute;top:-3.5rem;right:1rem
-    }
-    
-    .princing-item {
-      transition: all 150ms ease-out;
-    }
-    .princing-item:hover {
-      transform: scale(1.05);
-    }
-    .princing-item:hover .deco-layer--1 {
-      -webkit-transform: translate3d(15px, 0, 0);
-      transform: translate3d(15px, 0, 0);
-    }
-    .princing-item:hover .deco-layer--2 {
-      -webkit-transform: translate3d(-15px, 0, 0);
-      transform: translate3d(-15px, 0, 0);
-    }
-    #record{
-      color: blue;
-      text-decoration:underline;
-    }
-    #record:hover
-    {
-      cursor: pointer;
-      text-decoration:underline;
-    }
-    
-    #trash:hover
-    {
-cursor: pointer;
-    }
+}
+
+.blue .pricing-divider {
+    background: #2D5772;
+}
+
+.green .pricing-divider {
+    background: #1AA85C;
+}
+
+.red b {
+    color: #C64545
+}
+
+.blue b {
+    color: #2D5772
+}
+
+.green b {
+    color: #1AA85C
+}
+
+.pricing-divider-img {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+
+.deco-layer {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.btn-custom {
+    background: #C64545;
+    color: #fff;
+    border-radius: 20px
+}
+
+.img-float {
+    width: 50px;
+    position: absolute;
+    top: -3.5rem;
+    right: 1rem
+}
+
+.princing-item {
+    transition: all 150ms ease-out;
+}
+
+.princing-item:hover {
+    transform: scale(1.05);
+}
+
+.princing-item:hover .deco-layer--1 {
+    -webkit-transform: translate3d(15px, 0, 0);
+    transform: translate3d(15px, 0, 0);
+}
+
+.princing-item:hover .deco-layer--2 {
+    -webkit-transform: translate3d(-15px, 0, 0);
+    transform: translate3d(-15px, 0, 0);
+}
+
+#record {
+    color: #dc3545!important;
+    text-decoration: underline;
+}
+
+#record:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#trash:hover {
+    cursor: pointer;
+}
+
+#tableHead {
+    background: rgba(226, 226, 226, 1);
+    background: -moz-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226, 226, 226, 1)), color-stop(50%, rgba(219, 219, 219, 1)), color-stop(51%, rgba(209, 209, 209, 1)), color-stop(100%, rgba(254, 254, 254, 1)));
+    background: -webkit-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
+    background: -o-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
+    background: linear-gradient(to bottom, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0);
+}
+
+#tb {
+    background-image: url("https://www.designbolts.com/wp-content/uploads/2012/12/3d-rectagles-diagonals-white-Seamless-Pattern.jpg");
+}

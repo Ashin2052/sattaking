@@ -15,7 +15,7 @@ import { SendValue } from './SendValueModel';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-sendName:string;
+sendName:any;
   selectedYearAsText: number;
 selectedMonthIndex: number;
  endOfMonth:number;
@@ -165,6 +165,9 @@ console.log(this.startofMonth,this.endofM,"jkj")
 }
 SearchByMonth()
 {
+  this.harion=[]
+  this.ads=[];
+  this.deshawar=[];
   this.valueServce.monthValue(this.startofMonth,this.endofM).subscribe((response:any)=>
   {
     response.forEach(element => {
@@ -189,7 +192,6 @@ SearchByMonth()
 }
 sendList(list)
 {
-this.sendName=list.placeName;
-
+this.sendName=list;
 }
 }

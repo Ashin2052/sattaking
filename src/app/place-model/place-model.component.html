@@ -1,35 +1,10 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog  modal-xl" role="document">
+        <div class="modal-content ">
+            <div class="modal-header" id="heda">
                 <div class="card">
-                    <div class="card-header text-white justify-content-center " style="background-color:aliceblue;">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="exampleModel()"
-                            data-whatever="@mdo">Click Here to search the value of places according to month</button>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" data-backdrop="static"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Pick the date</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <app-datepicker (change)="onChange($event)"></app-datepicker>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                        (click)="SearchByMonth()">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2" (click)="exampleModel()" data-whatever="@mdo">Click Here to search the value of places according to month</button>
 
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,71 +12,124 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-body" id="tb">
+                    <div class="table-responsive table-bordered movie-table">
+                        <table class="table ">
 
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                            <tbody>
+                                <tr>
+                                    <!-- <td *ngFor="let list of harion">{{list.placeValue}}</td>
+                      <td>{{list.placeValue}}</td> -->
+                                    <td>
+                                        <table class="table table-hover">
+
+                                            <thead>{{placeAbbvr}}</thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of harion">
+                                                    <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
+
+                                                    <td>{{list.placeValue}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+
+                                    <td>
+                                        <table class="table table-hover">
+
+                                            <thead>DSWR</thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of harion">
+                                                    <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
+
+                                                    <td>{{list.placeValue}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                    <td>
+                                        <table class="table table-hover">
+                                            <thead>FRBD</thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of ads">
+                                                    <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
+
+                                                    <td>{{list.placeValue}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table class="table table-hover">
+                                            <thead>GZBD </thead>
+
+                                            <tbody>
+                                                <tr *ngFor="let list of deshawar">
+                                                    <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
+                                                    <td>{{list.placeValue}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                    <td>
+                                        <table class="table table-hover">
+                                            <thead>GALI </thead>
+
+                                            <tbody>
+                                                <tr *ngFor="let list of deshawar">
+                                                    <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
+                                                    <td>{{list.placeValue}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pick the date</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-datepicker (change)="onChange($event)"></app-datepicker>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="SearchByMonth()">Search</button>
             </div>
         </div>
     </div>

@@ -26,6 +26,11 @@ monthValue(startOfMonth,endOfM)
   return this.httpClient.get(finalUrl);
 
 }
+monthValueExtra(placeName,startOfMonth,endOfM)
+{
+  var finalUrl=this.baseUrl+"getByPlace?startOfMonth="+startOfMonth+'&&endOfM='+endOfM+"&&place="+placeName;
+  return this.httpClient.get(finalUrl); 
+}
 checkTodayValue(startDay,endDay)
 {
   var finalUrl=this.baseUrl+"startEnd?startDay="+startDay+'&&endDay='+endDay;

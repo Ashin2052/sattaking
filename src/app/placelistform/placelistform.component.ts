@@ -16,6 +16,7 @@ declare var $: any;
   styleUrls: ['./placelistform.component.css']
 })
 export class PlacelistformComponent implements OnInit {
+  placeEdit:boolean=true;
   urlId;
   submitted: boolean = false;
   startDay:number;
@@ -25,10 +26,11 @@ endDay:number;
   @ViewChild("createPlace", { static: false }) formData: NgForm;
   @ViewChild(ToastContainerDirective, {static: false}) toastContainer: ToastContainerDirective;
 
-  constructor(private ValueServiceService:ValueServiceService, private toastr: ToastrService,private router: Router,private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,private ValueServiceService:ValueServiceService, private toastr: ToastrService,private router: Router,private placeService: PlaceServiceService, private formBuilder: FormBuilder,private activateRoute:ActivatedRoute) { }
   
 
   ngOnInit() {
+   
     this.toastr.overlayContainer = this.toastContainer;
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
@@ -39,6 +41,10 @@ endDay:number;
 
     })
     this.urlId=this.activateRoute.snapshot.paramMap.get('id')
+    if(this.urlId)
+    {
+      this.placeEdit=false
+    }
  this.chooseOptions()
 
 
@@ -50,6 +56,7 @@ endDay:number;
  {
    this.placeService.getParticularPlace(this.urlId).subscribe((response:any)=>
    {
+     this.placeAddForm.get('placeName').setValue(response.placeName)
      this.placeModel=response;
    })
  }
@@ -115,7 +122,7 @@ valu.placeValue='XX'
 valu.uploadedTime=Number(moment().format('x'))
 this.ValueServiceService.savevalue(valu,this.startDay,this.endDay).subscribe((response:any)=>
 {
-  
+  this.toastr.success("Place Successfully added")
 })
   }
   cancelStory()
