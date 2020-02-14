@@ -7,6 +7,8 @@ import { Values } from '../values/values.model';
 import 'moment/locale/de';
 import { MonthValues } from './monthValue';
 import { SendValue } from './SendValueModel';
+import { Title, Meta } from '@angular/platform-browser';
+import { FacebookService, InitParams } from 'ngx-facebook';
 
 
 @Component({
@@ -15,6 +17,9 @@ import { SendValue } from './SendValueModel';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
+  searchMonthDisplay:any;
+  mnthDisplay:any;
+  dateDisplayFalg:boolean=false;
 sendName:any;
   selectedYearAsText: number;
 selectedMonthIndex: number;
@@ -39,18 +44,27 @@ yesterDay:any;
 today:any;
 yesterdayStartDate:any;
 yesterdayEndDate:any
+fmarqueList:string=''
+marqueList=[]
   constructor(private valueServce:ValueServiceService,
     private placeService:PlaceServiceService,
-    private siteService:SiteServicesService) { }
+    private facebookService: FacebookService,
+    private siteService:SiteServicesService,
+    private title:Title,
+    private meta:Meta) { }
 
   ngOnInit() {
+    this.marqueList=[]
+    this.initFacebookService();
+    this.title.setTitle('Dream Satta king')
+this.meta.addTag({name: 'description',Content:'Sattaking result of various sites'})
     this.startofMonth=Number(moment().startOf('month').format('x'));
  this.endofM=Number(moment().endOf('month').format('x'))
  this.SearchByMonth()
     this.yesterdayEndDate=moment().subtract(1, 'days').endOf('day').format('x'); 
     this.yesterdayStartDate=moment().subtract(1, 'days').startOf('day').format('x')
-    this.yesterDay=moment().subtract(1, 'days').format('LL'); 
-    this.today=moment().format('LL'); 
+    this.yesterDay=moment().locale('en').subtract(1, 'days').format('LL'); 
+    this.today=moment().locale('en').format('LL'); 
     this.startDay=Number(moment().startOf('day').format('x'))
     this.endDay=Number(moment().endOf('day').format('x'))
 
@@ -61,6 +75,10 @@ yesterdayEndDate:any
 
   }
 
+   initFacebookService() {
+    const initParams: InitParams = { xfbml:true, version:'v3.2'};
+    this.facebookService.init(initParams);
+  }
 getAllPlaceCount()
 {
   this.placeService.getAllPlace().subscribe((response:any)=>
@@ -90,7 +108,16 @@ this.getYesterdayList()
     {
       // console.log(response.length,this.allPlaceCount)
       this.todayTable=response;
-      return;
+      this.todayTable.forEach((elem)=>
+{
+  this.marqueList.push(elem.placeName+'-'+elem.placeValue)
+
+
+})
+console.log(this.marqueList)
+this.fmarqueList=this.marqueList.join("  .   ") 
+console.log(this.fmarqueList,"sadfsdfasdfas")
+return;
     }
       }  })
   }
@@ -109,6 +136,8 @@ this.getYesterdayList()
           this.todayTable.push(response)
         })
       });
+
+
     },err=>
     {
       return;
@@ -159,6 +188,7 @@ else
 {
   this.endOfMonth=30;
 }
+this.searchMonthDisplay=moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,1)).format('L')
  this.startofMonth=Number(moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,1)).format('x'))
 this.endofM=Number(moment(new Date(this.selectedYearAsText,this.selectedMonthIndex,this.endOfMonth)).format('x'))
 console.log(this.startofMonth,this.endofM,"jkj")
@@ -168,6 +198,8 @@ SearchByMonth()
   this.harion=[]
   this.ads=[];
   this.deshawar=[];
+  this.mnthDisplay=moment(this.startofMonth.toString()).format("MMMM  YYYY");               // Feb 5th 20
+
   this.valueServce.monthValue(this.startofMonth,this.endofM).subscribe((response:any)=>
   {
     response.forEach(element => {
@@ -189,6 +221,7 @@ SearchByMonth()
     });
 
   })
+  this.dateDisplayFalg=true;
 }
 sendList(list)
 {

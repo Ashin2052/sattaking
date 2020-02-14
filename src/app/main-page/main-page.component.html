@@ -1,15 +1,29 @@
 <app-header></app-header>
+
 <div class="container">
+    <div class="card-header" id="marq">
+        <!-- <div class="marquee">
+            <div>
+                <span>
+             </span>
+            </div>
+        </div> -->
+        <div class="example1">
+            <h3> {{fmarqueList}}
+            </h3>
+        </div>
+    </div>
     <div class="row">
+
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header text-danger ">
                     <i class="fa fa-align-justify"></i> {{today}} Satta King Value
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive table-bordered movie-table">
-                        <table class="table table-hover">
-                            <thead class="  text-dark" id="tableHead">
+                    <div class="table-responsive table-bordered  table-striped movie-table">
+                        <table class="table table-hover" id="ssd" style="background-color:#d3d3d3;">
+                            <thead class="text-dark" id="tableHead">
                                 <tr>
                                     <th scope="col">Place </th>
                                     <th scope="col">Value </th>
@@ -46,7 +60,7 @@
                     <i class="fa fa-align-justify text-danger"></i> {{yesterDay}} Satta King Value
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive table-bordered movie-table">
+                    <div class="table-responsive table-bordered  table-striped movie-table" id="ssd">
                         <table class="table table-hover">
                             <thead class="  text-dark" id="tableHead">
                                 <tr>
@@ -58,7 +72,7 @@
 
                             <tbody style="border:1px solid transparent; background-color:white; color:#2a2a2a; text-align: left;">
                                 <tr *ngFor="let list of yesTerdayTable">
-                                    <td>{{list.placeName}}-{{list.placeAbbvr}} <a id="record" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;position: relative;" (click)=sendList(list)>Record</a><br>{{list.updatedAt | date:"HH:mm"
+                                    <td [id]="">{{list.placeName}}-{{list.placeAbbvr}} <a id="record" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;position: relative;" (click)=sendList(list)>Record</a><br>{{list.updatedAt | date:"HH:mm"
                                         }}
                                     </td>
                                     <td>{{list.placeValue}}</td>
@@ -161,8 +175,9 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header text-white justify-content-center " style="background-color:aliceblue;">
-            <button type="button" class="  text-danger" id="tableHead" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here to search the value of places according to month</button>
+        <div class="card-header text-white justify-content-center " style="background-color:aliceblue;color: red;">
+            <label style="color: red;"> Satta King value of {{searchMonthDisplay }}</label>
+            <!-- <button type="button" class="  text-danger" id="tableHead" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here to search the value of places according to month</button> -->
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -260,7 +275,37 @@
 
             </div>
         </div>
+        <div class="card-footer">
+            <button type="button" class="  text-danger" id="tableHead" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here to search the value of places according to month</button>
+
+        </div>
     </div>
+
+    <div class="fb-customerchat" page_id="100155738243159">
+    </div>
+    <!-- <div>
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    xfbml: true,
+                    version: 'v6.0'
+                });
+            };
+
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+    <div class="fb-customerchat" attribution=setup_tool page_id="100155738243159">
+    </div>
+</div> -->
 
 
     <app-footer></app-footer>

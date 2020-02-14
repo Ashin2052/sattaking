@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FacebookModule } from 'ngx-facebook';
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -58,6 +59,8 @@ import { PlaceModelComponent } from './place-model/place-model.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,MomentModule,
+    FacebookModule.forRoot(),
+
 
     HttpClientModule,
     NgbModule,

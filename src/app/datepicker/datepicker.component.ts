@@ -27,7 +27,7 @@ export class DatepickerComponent implements OnInit {
     if (this.locale) {
       moment.locale(this.locale);
     } else {
-      moment.locale('de');
+      moment.locale('en');
     }
 
     this.model = new MonthPickerModel();
