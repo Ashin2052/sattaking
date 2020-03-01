@@ -33,7 +33,7 @@ deleteparagraph(id)
   });
 }
 
-updateparagraph(id,value)
+updateparagraph(value,id)
 {
   this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 

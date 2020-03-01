@@ -8,18 +8,28 @@ import { ToastrService,ToastContainerDirective } from 'ngx-toastr';
   styleUrls: ['./paragraph.component.css']
 })
 export class ParagraphComponent implements OnInit {
-
+p:number=1;
   paragraphArray=[]
   editValue;
   @ViewChild(ToastContainerDirective, {static: false}) toastContainer: ToastContainerDirective;
   constructor(private paragraphService:paragraphServicesService,private toastr:ToastrService ) { }
 
   ngOnInit() {
+    this.getParagraph()
+  }
+
+  getParagraph()
+  {
+    this.paragraphService.getAllparagraph().subscribe((response:any)=>
+    {
+      this.paragraphArray=response;
+    })
   }
 
   receivedData(newData) {
     let index = this.paragraphArray.findIndex(x => x._id == newData._id);
     if (index == -1) {
+      console.log(newData,"newData")
       this.paragraphArray.push(newData);
     } else {
       this.paragraphArray[index] = newData;
@@ -27,6 +37,8 @@ export class ParagraphComponent implements OnInit {
   
   }
   delete(list, i) {
+    if (window.confirm("Do yo reallly want to delete??")) {
+
 this.paragraphService.deleteparagraph(list._id).subscribe((response:any)=>
 {
   this.toastr.success("Paragraph deleted successfully")
@@ -36,6 +48,7 @@ this.paragraphService.deleteparagraph(list._id).subscribe((response:any)=>
   this.toastr.error("Paragraph deletion unsuccessful")
 
 })
+    }
 
   }
 

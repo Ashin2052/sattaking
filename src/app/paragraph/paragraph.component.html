@@ -12,14 +12,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>A paragraph is a series of related sentences developing a central idea, called the topic. Try to think about paragraphs in terms of thematic unity: a paragraph is a sentence or a group of sentences that supports one central, unified
-                        idea. Paragraphs add one idea at a time to your broader argument.</td>
-                    <td><button type="button" class="btn btn-secondary" (click)="update(list,i)"><i class="far fa-edit"></i></button></td>
-                    <td><button type="button" class="btn btn-secondary" (click)="delete(list,i)"><i class="fas fa-trash"></i></button></td>
+                <tr *ngFor="let list of paragraphArray
+                  | paginate: { itemsPerPage: 30, currentPage: p };
+                  let i = index">
+                    <td>{{list.paragraph}}</td>
+                    <td><button type="button" class="btn btn-secondary" (click)="update(list,i)"><i class="far fa-edit"></i></button> <button type="button" class="btn btn-secondary" (click)="delete(list,i)"><i class="fas fa-trash"></i></button></td>
                 </tr>
             </tbody>
         </table>
+        <pagination-controls (pageChange)="p = $event" style="text-align: center;">
+        </pagination-controls>
     </div>
 </div>
 <app-paragraph-form [passedUserValue]="editValue" (newData)="receivedData($event)"></app-paragraph-form>
