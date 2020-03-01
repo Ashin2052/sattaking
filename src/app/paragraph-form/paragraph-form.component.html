@@ -1,0 +1,28 @@
+<form name="form" (ngSubmit)="f.form.valid && saveParagraph()" #f="ngForm" novalidate>
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="modalLoginForm" aria-hidden="true" data-backdrop='static'>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLoginForm">Paragraph</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetParagraph()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group ">
+                        <label>Paragraph</label>
+                        <textarea class="form-control" rows="5" id="paragraph" [(ngModel)]="newValue.paragraph" #paragraph="ngModel" name="paragraph" required minlength="42" [ngClass]="{ 'is-invalid': f.submitted && paragraph.invalid }" required></textarea>
+                        <div *ngIf="f.submitted && paragraph.invalid" class="invalid-feedback">
+                            <div *ngIf="paragraph.errors.required"> Required</div>
+                            <div *ngIf="paragraph.errors.minlength">Paragraph must be at least 42 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="resetParagraph()">Close</button>
+                    <button type="submit" class="btn btn-primary">Register </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

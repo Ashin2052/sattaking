@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -8,6 +10,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src="moment.js "></script>
+<!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 <script src="moment-timezone-with-data.js "></script>
 <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"></script>
 
@@ -18,10 +22,36 @@
     <meta name="viewport " content="width=device-width, initial-scale=1 ">
     <meta name="description " content="Sattaking latest value ">
     <link rel="icon " type="image/x-icon " href="favicon.ico ">
-
 </head>
 
 <body id="bimg ">
+    <div id="xx">
+        <script type="text/javascript">
+            (function() {
+                var options = {
+                    facebook: "100155738243159", // Facebook page ID
+                    whatsapp: "9779863370850", // WhatsApp number
+                    call_to_action: "Message", // Call to action
+                    button_color: "#25D366", // Color of button
+                    position: "left", // Position may be 'right' or 'left'
+                    order: "facebook,whatsapp", // Order of buttons
+                };
+                var proto = document.location.protocol,
+                    host = "getbutton.io",
+                    url = proto + "//static." + host;
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = url + '/widget-send-button/js/init.js';
+                s.onload = function() {
+                    WhWidgetSendButton.init(host, proto, options);
+                };
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            })();
+        </script>
+    </DIV>
+
     <app-root></app-root>
 </body>
 

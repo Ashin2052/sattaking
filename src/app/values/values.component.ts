@@ -89,6 +89,8 @@ receivedData(newData) {
         this.values.placeAbbvr=element.placeAbbvr
         this.values.placeName=element.placeName
         this.values.placeValue='XX';
+        this.values.highlight=element.highlight
+
         this.values.uploadedTime=Number(moment().format('x'))
  
         this.valueServiceService.savevalue(this.values,this.startDay,this.endDay).subscribe((response:any)=>

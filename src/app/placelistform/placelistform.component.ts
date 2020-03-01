@@ -36,6 +36,8 @@ endDay:number;
     this.endDay=Number(moment().endOf('day').format('x'))
     this.placeAddForm = this.formBuilder.group({
       placeName: ['', <any>Validators.required],
+      highlight: [false],
+
       placeAbbvr: ['', <any>Validators.required],
       placeTime: ['', <any>Validators.required]
 
@@ -75,6 +77,10 @@ else
 
 
 }
+onToggle(event)
+{
+this.placeModel.highlight=event.srcElement.checked;
+}
 update()
 {
   this.submitted=true;
@@ -86,6 +92,7 @@ update()
   {
     this.placeService.updatePlace(this.urlId,this.placeModel).subscribe((response):any=>{
      this.router.navigateByUrl('admin')
+     console.log(response,"rep")
      this.toastr.success("Place successfully updated")
     },err=>
     {
@@ -103,6 +110,7 @@ update()
     }
     else
     {
+      this.placeModel.placeName=this.placeModel.placeName.toUpperCase()
       this.placeService.savePlace(this.placeModel).subscribe((response):any=>{
        this.router.navigateByUrl('admin')
        this.addPlaceValue(response)
@@ -119,6 +127,8 @@ update()
 var valu=new Values()
 valu.placeName=response.placeName;
 valu.placeValue='XX'
+valu.placeAbbvr=response.placeAbbvr
+valu.highlight=response.highlight;
 valu.uploadedTime=Number(moment().format('x'))
 this.ValueServiceService.savevalue(valu,this.startDay,this.endDay).subscribe((response:any)=>
 {

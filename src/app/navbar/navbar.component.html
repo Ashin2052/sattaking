@@ -4,17 +4,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" [routerLink]="['/admin']">  Places</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" [routerLink]="['/admin']">  Places</a>
 
-        <a class="nav-item nav-link" [routerLink]="['/values']">  Value</a>
+            <a class="nav-item nav-link" [routerLink]="['/values']">  Value</a>
 
-        <a class="nav-item nav-link" [routerLink]="['/sites']"> Sites</a>
-  
-  
-      </div>
-  
+            <a class="nav-item nav-link" [routerLink]="['/sites']"> Sites</a>
+            <a class="nav-item nav-link" [routerLink]="['/paragraph']"> Paragraph</a>
+
+
+
+        </div>
+
     </div>
-    <button type="button" class="btn btn-danger  "  (click)="logOut()">logOut</button>
-  
-  </nav>
+    <button type="button" class="btn btn-danger  " (click)="logOut()">logOut</button>
+
+</nav>

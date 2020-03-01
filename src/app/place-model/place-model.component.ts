@@ -39,7 +39,6 @@ export class PlaceModelComponent implements OnInit {
       this.deshawar = []
       this.Goa = []
       this.farizawad = []
-      console.log(value);
       this.placeAbbvr = value.placeAbbvr
       this.recievedValue = value.placeName;
       this.SearchByMonth()
@@ -61,7 +60,7 @@ export class PlaceModelComponent implements OnInit {
     }
     this.startofMonth = Number(moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, 1)).format('x'))
     this.endOfM = Number(moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, this.endOfMonth)).format('x'))
-    console.log(this.startofMonth, this.endOfM, "jkj")
+    // console.log(this.startofMonth, this.endOfM, "jkj")
   }
 
   SearchByMonth() {
@@ -72,7 +71,7 @@ export class PlaceModelComponent implements OnInit {
     this.farizawad = []
     this.valueServce.monthValueExtra(this.recievedValue, this.startofMonth, this.endOfM).subscribe((response: any) => {
       response.forEach(element => {
-        console.log(element)
+        // console.log(element)
         if (element.placeName == "harion") {
           this.harion.push(element)
         }

@@ -64,34 +64,32 @@
                   </div>
                 </div>
               
-              </form>
+                <div class="col-6">
+                  <div class="form-group">
+                    <!-- Default switch -->
+<div class="custom-control custom-switch">
+  <input type="checkbox" formControlName="highlight"(change)="onToggle($event)" [(ngModel)]="placeModel.highlight" class="custom-control-input" id="customSwitches">
+  <label class="custom-control-label" for="customSwitches">Do you want to highlight this place</label>
+                    </div>
+                </div>
+        </div>
+        </form>
 
-              <div class="form-group">
-                <button
-                  id="cancelAgentButton"
-                  style="    position: relative;
+        <div class="form-group">
+            <button id="cancelAgentButton" style="    position: relative;
                   top: 4px;
-                  left: 4px;"
-                  type="button"
-                  class="btn btn-secondary"
-                  (click)="cancelStory()"
-                >
+                  left: 4px;" type="button" class="btn btn-secondary" (click)="cancelStory()">
                   Cancel
                 </button>
-              </div>
-              <div class="form-group">
-                <button
-                  id="saveButton"
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="  saveEditOptions()"
-                >
+        </div>
+        <div class="form-group">
+            <button id="saveButton" type="button" class="btn btn-primary" (click)="  saveEditOptions()">
                   {{ urlId ? "Update " : "Save " }}
                 </button>
-              </div>
         </div>
-
-
     </div>
 
-  </div>
+
+</div>
+
+</div>

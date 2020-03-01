@@ -13,6 +13,7 @@ import { SitesComponent } from './sites/sites.component';
 import { SitesFormComponent } from './sites-form/sites-form.component';
 import { ValuesComponent } from './values/values.component';
 import { TableComponentComponent } from './table-component/table-component.component';
+import { ParagraphComponent } from './paragraph/paragraph.component';
 const routes: Routes = [
   {
     path:'',
@@ -37,6 +38,11 @@ const routes: Routes = [
     path:'placeadd',
     canActivate:[AuthGuard],
     component:PlacelistformComponent
+  },
+  {
+    path:'paragraph',
+    canActivate:[AuthGuard],
+    component:ParagraphComponent
   },
   {
     path:'placeadd/:id',

@@ -33,6 +33,10 @@ import { FooterComponent } from './footer/footer.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { TableComponentComponent } from './table-component/table-component.component';
 import { PlaceModelComponent } from './place-model/place-model.component';
+import { ParagraphComponent } from './paragraph/paragraph.component';
+import { ParagraphFormComponent } from './paragraph-form/paragraph-form.component';
+import { ColorDDirective } from './main-page/color-d.directive';
+import { ColorModifyPipe } from './color-modify.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,10 @@ import { PlaceModelComponent } from './place-model/place-model.component';
     DatepickerComponent,
     TableComponentComponent,
     PlaceModelComponent,
+    ParagraphComponent,
+    ParagraphFormComponent,
+    ColorDDirective,
+    ColorModifyPipe,
   ],
   imports: [
     BrowserModule,
