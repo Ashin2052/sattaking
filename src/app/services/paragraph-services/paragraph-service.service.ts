@@ -48,13 +48,9 @@ updateparagraph(value,id)
 
   getAllparagraph()
   {
-    this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
+    // this.sattaToken = JSON.parse(localStorage.getItem('sattaToken')).jwtToken
 
-    return this.httpClient.get(this.baseUrl,{
-      headers:new HttpHeaders({
-        Authorization:this.sattaToken
-      })
-    });
+    return this.httpClient.get(this.baseUrl);
   }
 
 getParticularparagraph(id)

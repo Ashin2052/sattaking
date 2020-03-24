@@ -6,11 +6,14 @@ import { PlaceServiceService } from '../services/place-service.service';
 import { Values } from '../values/values.model';
 import 'moment/locale/de';
 import { MonthValues } from './monthValue';
+// import {speakeasy} from 'speakeasy'
 import { SendValue } from './SendValueModel';
 import { Title, Meta } from '@angular/platform-browser';
 import { FacebookService, InitParams } from 'ngx-facebook';
+import { paragraphServicesService } from '../services/paragraph-services/paragraph-service.service';
+import { from } from 'rxjs';
 
-
+declare var $:any;
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -18,6 +21,7 @@ import { FacebookService, InitParams } from 'ngx-facebook';
 })
 export class MainPageComponent implements OnInit {
   searchMonthDisplay: any;
+  paragraphList=[]
   mnthDisplay: any;
   dateDisplayFalg: boolean = false;
   sendName: any;
@@ -47,14 +51,20 @@ export class MainPageComponent implements OnInit {
   fmarqueList: string = ''
   marqueList = []
   constructor(private valueServce: ValueServiceService,
+    private paragraphService:paragraphServicesService,
     private placeService: PlaceServiceService,
     private facebookService: FacebookService,
     private siteService: SiteServicesService,
     private title: Title,
     private meta: Meta) { }
-
+    secrettoken;
+    emailForSubscription;
+    enterOtpFlag;
+    emailForSubsFlag;
   ngOnInit() {
-    this.marqueList = []
+      $('#otpModel').modal('show')
+
+      this.marqueList = []
     this.initFacebookService();
     this.title.setTitle('Dream Satta king')
     this.meta.addTag({ name: 'description', Content: 'Sattaking result of various sites' })
@@ -72,12 +82,50 @@ export class MainPageComponent implements OnInit {
     this.getAllPlaceCount()
 
     this.getTodaySiteList()
+    this.getParagraph()
 
   }
+generateToken()
+{
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.emailForSubscription))
+  {
+    this.emailForSubsFlag=false;
 
+    this.secrettoken=Math.floor(100000000000000 + Math.random() * 900000000000000)
+    // this.secrettoken = speakeasy.generateSecret({length: 20});
+
+    this.placeService.genetateOtp(this.emailForSubscription,this.secrettoken).subscribe((response:any)=>
+    {
+    console.log(response)
+    },err=>
+    {
+      this.enterOtpFlag=true;
+    })  }
+    else
+    {
+      this.emailForSubsFlag=true;
+    }
+
+
+}
+
+validOtp()
+{
+
+}
   initFacebookService() {
     const initParams: InitParams = { xfbml: true, version: 'v3.2' };
     this.facebookService.init(initParams);
+  }
+
+  getParagraph()
+  {
+    this.paragraphService.getAllparagraph().subscribe((response:any)=>
+    {
+      response.forEach(element => {
+        this.paragraphList.push(element.paragraph)
+      });
+    })
   }
   getAllPlaceCount() {
     this.placeService.getAllPlace().subscribe((response: any) => {
@@ -106,7 +154,6 @@ export class MainPageComponent implements OnInit {
 
 
           })
-          console.log(this.marqueList)
           this.fmarqueList = this.marqueList.join(" .  ")
           return;
         }
@@ -126,7 +173,11 @@ export class MainPageComponent implements OnInit {
           this.todayTable.push(response)
         })
       });
-      this.fmarqueList = this.todayTable.join(" . ")
+      this.todayTable.forEach((elem) => {
+        this.marqueList.push(elem.placeName + '-' + elem.placeValue)
+
+      })
+      this.fmarqueList = this.marqueList.join(" . ")
 
     }, err => {
       return;
@@ -185,7 +236,6 @@ else
     this.searchMonthDisplay = moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, 1)).format('L')
     this.startofMonth = Number(moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, 1)).format('x'))
     this.endofM = Number(moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, this.endOfMonth)).format('x'))
-    console.log(this.startofMonth, this.endofM, "jkj")
   }
   SearchByMonth() {
     this.harion = []
@@ -215,4 +265,17 @@ else
   sendList(list) {
     this.sendName = list;
   }
+  ngAfterViewInit()	
+{
+  setTimeout(()=>
+ { this.marqueListPopulate()},10000 )
+}
+marqueListPopulate()
+{
+  this.marqueList=[];
+  this.todayTable.forEach((elem) => {
+    this.marqueList.push(elem.placeName + '-' + elem.placeValue)
+
+  })
+  this.fmarqueList = this.marqueList.join(" . ")}
 }

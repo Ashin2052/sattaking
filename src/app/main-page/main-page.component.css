@@ -274,6 +274,10 @@ tbody {
     }
 }
 
+#cardHigh {
+    background-image: url("https://i.pinimg.com/564x/d2/12/68/d2126804e2d307980d3a1dd159b39973.jpg");
+}
+
 .green-row {
     background-color: red;
 }
@@ -281,6 +285,8 @@ tbody {
 .red-row {
     background-color: red;
 }
+
+#otpModal {}
 
 @keyframes example1 {
     0% {

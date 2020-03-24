@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="card">
     <div class="card-header">
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLoginForm" (click)="addPlace()">Add place</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLoginForm" (click)="addPlace()">Add paragraph</button>
     </div>
     <div class="card-body">
         <table class="table table-striped">
@@ -15,8 +15,11 @@
                 <tr *ngFor="let list of paragraphArray
                   | paginate: { itemsPerPage: 30, currentPage: p };
                   let i = index">
-                    <td>{{list.paragraph}}</td>
-                    <td><button type="button" class="btn btn-secondary" (click)="update(list,i)"><i class="far fa-edit"></i></button> <button type="button" class="btn btn-secondary" (click)="delete(list,i)"><i class="fas fa-trash"></i></button></td>
+                    <td style="word-break:break-all;">{{list.paragraph}}</td>
+                    <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLoginForm" (click)="update(list,i)"><i class="far fa-edit"></i></button>
+                    </td>
+                    <td> <button type="button" class="btn btn-secondary" (click)="delete(list,i)"><i class="fas fa-trash"></i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -10,6 +10,15 @@ export class PlaceServiceService {
   baseUrl=environment.baseUrl+'rest/v1/place/';
   sattaToken:any;
   constructor(private httpClient: HttpClient) { }
+  genetateOtp(emailForSubscription,secrettoken)
+  {
+
+    const body={
+      emailForSubscription,secrettoken
+    }
+    const otpUrl=environment.baseUrl+'rest/v1/mailer'
+    return this.httpClient.post(otpUrl,body);
+  }
 
 savePlace(place)
 {

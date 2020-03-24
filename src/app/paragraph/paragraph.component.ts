@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { paragraphServicesService } from '../services/paragraph-services/paragraph-service.service';
 import { ToastrService,ToastContainerDirective } from 'ngx-toastr';
-
+declare var $:any;
 @Component({
   selector: 'app-paragraph',
   templateUrl: './paragraph.component.html',
@@ -29,9 +29,9 @@ p:number=1;
   receivedData(newData) {
     let index = this.paragraphArray.findIndex(x => x._id == newData._id);
     if (index == -1) {
-      console.log(newData,"newData")
       this.paragraphArray.push(newData);
     } else {
+
       this.paragraphArray[index] = newData;
     }
   

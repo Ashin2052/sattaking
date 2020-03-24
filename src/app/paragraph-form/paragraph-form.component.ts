@@ -21,7 +21,7 @@ export class ParagraphFormComponent implements OnInit {
       this.newValue = value;
       if (value._id) {
       this.pId = value._id;
-        this.editFlag = false;
+        this.editFlag = true;
       }
       // console.log(this.newUser, "this.newUser ,makfma")
     }
@@ -37,8 +37,11 @@ export class ParagraphFormComponent implements OnInit {
     else {
       this.paraService.saveparagraph(this.newValue).subscribe((response: any) => {
         this.newData.emit(response)
-        $("#modalLoginForm").modal("hide");
         this.toastr.success("Paaragraph Added Successfully")
+        $("#modalLoginForm").modal("hide");
+        $(".modal-backdrop").remove();
+        this.newValue=new ParaModel()
+
       }, err => {
         this.toastr.error("Unsuccessful")
 
@@ -49,8 +52,12 @@ export class ParagraphFormComponent implements OnInit {
   update() {
     this.paraService.updateparagraph(this.newValue, this.pId).subscribe((response: any) => {
       this.newData.emit(response)
-      $("#modalLoginForm").modal("hide");
+      this.newValue=new ParaModel()
       this.toastr.success("Paaragraph Update Successfully")
+      $("#modalLoginForm").modal("hide");
+      $(".modal-backdrop").remove();
+
+
     }, err => {
       this.toastr.error("Unsuccessful")
 
