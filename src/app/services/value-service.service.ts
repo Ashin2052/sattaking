@@ -11,6 +11,25 @@ export class ValueServiceService {
 
   baseUrl=environment.baseUrl+'rest/v1/value/';
   sattaToken :any;
+  email={
+    email:String
+  }
+saveMail(emailForSubscription)
+{
+  var finalUrl=this.baseUrl+'/save/email';
+ this.email.email=emailForSubscription
+
+  
+  return this.httpClient.post(finalUrl,this.email);
+}
+sedInfo(startDay,endDay)
+{
+  var finalUrl=this.baseUrl+"sendinfo?startDay="+startDay+'&&endDay='+endDay;
+
+  
+  return this.httpClient.get(finalUrl);
+}
+
 
 savevalue(value,startDay,endDay)
 {
