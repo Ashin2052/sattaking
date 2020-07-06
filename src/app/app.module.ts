@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FacebookModule } from 'ngx-facebook';
-
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { MessagingService } from './service/messaging.service';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +41,8 @@ import { ParagraphComponent } from './paragraph/paragraph.component';
 import { ParagraphFormComponent } from './paragraph-form/paragraph-form.component';
 import { ColorDDirective } from './main-page/color-d.directive';
 import { ColorModifyPipe } from './color-modify.pipe';
+import { environment } from 'src/environments/environment';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -69,7 +75,10 @@ import { ColorModifyPipe } from './color-modify.pipe';
     ReactiveFormsModule,MomentModule,
     FacebookModule.forRoot(),
 
-
+    AngularFireModule.initializeApp(environment.firebasevar),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
     HttpClientModule,
     NgbModule,
     FormsModule,
@@ -82,7 +91,7 @@ import { ColorModifyPipe } from './color-modify.pipe';
     ToastContainerModule,
     NgxPaginationModule
   ],
-  providers: [ JwtHelperService,AuthService,
+  providers: [ JwtHelperService,AuthService,MessagingService,AsyncPipe,
     AuthGuardService,],
   bootstrap: [AppComponent
   ]
