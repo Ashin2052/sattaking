@@ -3,7 +3,6 @@ import { Values } from '../values/values.model';
 import { ValueServiceService } from '../services/value-service.service';
 declare var $: any;
 
-
 @Component({
   selector: 'app-valuesfrom',
   templateUrl: './valuesfrom.component.html',
@@ -11,7 +10,7 @@ declare var $: any;
 })
 export class ValuesfromComponent implements OnInit {
 
-  newValue=new Values()
+  newValue = new Values()
   @Output() newData = new EventEmitter();
   @Input() set passedUserValue(value) {
     if (value) {
@@ -19,30 +18,26 @@ export class ValuesfromComponent implements OnInit {
       // console.log(this.newUser, "this.newUser ,makfma")
     }
   }
-
-  constructor(private valueServiceService:ValueServiceService) { }
+  constructor(private valueServiceService: ValueServiceService) { }
 
   ngOnInit() {
   }
-  SaveV(nVal)
-  {
-  this.valueServiceService.updatevalue(nVal._id,nVal).subscribe((response:any)=>
-  {
-    $("#exampleModal").modal("hide");
-    // $("#exampleModal").attr( "data-dismiss","modal");
-    this.newData.emit(response)
+  SaveV(nVal) {
+    this.valueServiceService.updatevalue(nVal._id, nVal).subscribe((response: any) => {
+      $("#exampleModal").modal("hide");
+      // $("#exampleModal").attr( "data-dismiss","modal");
+      this.newData.emit(response)
 
-  
-  this.newValue=new Values()
-  
-  
-  })
+
+      this.newValue = new Values()
+
+
+    })
   }
 
- 
-  cancelv()
-  {
+
+  cancelv() {
     $("#exampleModal").modal("hide");
-    this.newValue=new Values()
+    this.newValue = new Values()
   }
 }

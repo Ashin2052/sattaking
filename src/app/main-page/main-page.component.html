@@ -44,7 +44,6 @@
         <div class="card-body mb-3 " id="cardHigh">
             <h5>सीधे सट्टा-किंग कंपनी से खबर देखने के लिए रुके रहिये</h5>
             <div class="row">
-
                 <div *ngFor="let list of todayTable" class="col-md-3">
                     <div *ngIf="list.highlight">
                         <h2 class="gamename">{{list.placeName}}</h2>
@@ -231,7 +230,7 @@
     </div>
     <div class="card">
         <div class="card-header text-white justify-content-center " style="background-color:aliceblue;color: red;">
-            <label style="color: red;"> Satta King value of {{searchMonthDisplay }}</label>
+            <label style="color: red;"> Satta King value of {{searchMonthDisplay  }}</label>
             <!-- <button type="button" class="  text-danger" id="tableHead" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here to search the value of places according to month</button> -->
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -268,10 +267,12 @@
 
                                     <thead style="float:right;position: relative;">DSWR</thead>
                                     <tbody>
-                                        <tr *ngFor="let list of harion">
-                                            <td> {{list.updatedAt | amDateFormat:'ll'}}</td>
-
-                                            <td>{{list.placeValue}}</td>
+                                        <tr *ngFor="let list of deshawar">
+                                            <td>{{list.placeValue}}
+                                                <span style="font-size: 10px;"> 
+                                                     {{list.createdAt | amDateFormat:'l'}}
+                                                </span>
+                                            </td>
 
                                         </tr>
 
@@ -283,10 +284,12 @@
                                 <table class="table table-hover">
                                     <thead>FRBD</thead>
                                     <tbody>
-                                        <tr *ngFor="let list of ads">
-                                            <!-- <td> {{list.updatedAt | amDateFormat:'ll'}}</td> -->
-
-                                            <td>{{list.placeValue}}</td>
+                                        <tr *ngFor="let list of faridabad">
+                                            <td>{{list.placeValue}}
+                                                <span style="font-size: 10px;"> 
+                                                     {{list.createdAt | amDateFormat:'l'}}
+                                                </span>
+                                            </td>
 
                                         </tr>
 
@@ -295,13 +298,15 @@
                             </td>
                             <td>
                                 <table class="table table-hover">
-                                    <thead>GZBD </thead>
+                                    <thead>GHAZIABAD </thead>
 
                                     <tbody>
-                                        <tr *ngFor="let list of deshawar">
-                                            <!-- <td> {{list.updatedAt | amDateFormat:'ll'}}</td> -->
-                                            <td>{{list.placeValue}}</td>
-
+                                        <tr *ngFor="let list of GHAZIABAD">
+                                            <td>{{list.placeValue}}
+                                                <span style="font-size: 10px;"> 
+                                                     {{list.createdAt | amDateFormat:'l'}}
+                                                </span>
+                                            </td>
                                         </tr>
 
                                     </tbody>
@@ -313,9 +318,12 @@
                                     <thead>GALI </thead>
 
                                     <tbody>
-                                        <tr *ngFor="let list of deshawar">
-                                            <!-- <td> {{list.updatedAt | amDateFormat:'ll'}}</td> -->
-                                            <td>{{list.placeValue}}</td>
+                                        <tr *ngFor="let list of gali">
+                                            <td>{{list.placeValue}}
+                                                <span style="font-size: 10px;"> 
+                                                     {{list.createdAt | amDateFormat:'l'}}
+                                                </span>
+                                            </td>
 
                                         </tr>
 

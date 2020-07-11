@@ -62,32 +62,37 @@ export class PlaceModelComponent implements OnInit {
     this.endOfM = Number(moment(new Date(this.selectedYearAsText, this.selectedMonthIndex, this.endOfMonth)).format('x'))
     // console.log(this.startofMonth, this.endOfM, "jkj")
   }
-
+  faridabad = []
+  gali = []
+  GHAZIABAD = []
+  newPlace=[]
   SearchByMonth() {
     this.harion = []
     this.ads = []
     this.deshawar = []
     this.Goa = []
     this.farizawad = []
+    this.newPlace=[]
+    if (this.recievedValue === undefined) {
+      return
+    }
     this.valueServce.monthValueExtra(this.recievedValue, this.startofMonth, this.endOfM).subscribe((response: any) => {
       response.forEach(element => {
-        // console.log(element)
-        if (element.placeName == "harion") {
-          this.harion.push(element)
-        }
-        else if (element.placeName == "ads") {
-          this.ads.push(element)
 
+        if (element.placeName.trim() == "FARIDABAD") {
+          this.faridabad.push(element);
+        } else if (element.placeName.trim() == "DESAWAR") {
+          this.deshawar.push(element);
+        } else if (element.placeName.trim() == "GALI") {
+          this.gali.push(element);
+        } else if (element.placeName.trim() == "GHAZIABAD") {
+          this.GHAZIABAD.push(element);
         }
-        else if (element.placeName == this.recievedValue) {
-          this.deshawar.push(element)
-
-        }
-        else if (element.placeName = "Goa") {
-          this.Goa.push(element)
+        else if (element.placeName.trim() == this.recievedValue.trim()) {
+          this.newPlace.push(element);
         }
         else {
-          this.farizawad.push(element)
+          return
         }
 
       });
@@ -97,8 +102,7 @@ export class PlaceModelComponent implements OnInit {
   exampleModel() {
     $("#exampleModal").css("z-index", "999999 !important")
   }
-  close()
-  {
+  close() {
     console.log("ashin")
   }
 }

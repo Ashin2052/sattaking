@@ -24,7 +24,13 @@ valueTable=[]
 endDay:number;
 savedResponse=[];
 startDay:number;
-  constructor(private placeServiceService:PlaceServiceService,private valueServiceService:ValueServiceService) { }
+  constructor(private placeServiceService:PlaceServiceService,private valueServiceService:ValueServiceService) {
+
+    setInterval(()=>
+    {
+this.ngOnInit()
+    },86400000)
+   }
 
   ngOnInit() {
     this.startDay=Number(moment().startOf('day').format('x'))
@@ -90,9 +96,7 @@ receivedData(newData) {
         this.values.placeName=element.placeName
         this.values.placeValue='XX';
         this.values.highlight=element.highlight
-
         this.values.uploadedTime=Number(moment().format('x'))
- 
         this.valueServiceService.savevalue(this.values,this.startDay,this.endDay).subscribe((response:any)=>
         {
           this.valueTable.push(response)

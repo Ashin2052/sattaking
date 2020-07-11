@@ -32,7 +32,7 @@ export class MainPageComponent implements OnInit {
   endofM: number;
   deshawar = [];
   harion = [];
-  ads = [];
+  GHAZIABAD = [];
   monthValue = new MonthValues();
   todayTable = [];
   todaySiteList = [];
@@ -67,7 +67,7 @@ export class MainPageComponent implements OnInit {
   emailForSubsFlag;
   enteredOtpVale;
   ngOnInit() {
-    $("#otpModel").modal("show");
+    // $("#otpModel").modal("show");
 
     this.marqueList = [];
     this.initFacebookService();
@@ -204,21 +204,13 @@ export class MainPageComponent implements OnInit {
     this.valueServce
       .checkTodayValue(this.startDay, this.endDay)
       .subscribe((response: any) => {
-        if (response === undefined || response.length == 0) {
-          this.getAllPlace();
-        } else {
-          if (response && response.length < this.allPlaceCount) {
-            this.getAllPlace();
-          } else {
-            // console.log(response.length,this.allPlaceCount)
+       console.log(response)
             this.todayTable = response;
             this.todayTable.forEach(elem => {
               this.marqueList.push(elem.placeName + "-" + elem.placeValue);
             });
             this.fmarqueList = this.marqueList.join(" .  ");
             return;
-          }
-        }
       });
   }
   getAllPlace() {
@@ -306,10 +298,14 @@ export class MainPageComponent implements OnInit {
       ).format("x")
     );
   }
+  gali=[]
+  faridabad=[];
   SearchByMonth() {
     this.harion = [];
-    this.ads = [];
+    this.GHAZIABAD = [];
     this.deshawar = [];
+    this.gali=[]
+    this.faridabad=[]
     this.mnthDisplay = moment(this.startofMonth.toString()).format(
       "MMMM  YYYY"
     ); // Feb 5th 20
@@ -318,12 +314,20 @@ export class MainPageComponent implements OnInit {
       .monthValue(this.startofMonth, this.endofM)
       .subscribe((response: any) => {
         response.forEach(element => {
-          if (element.placeName == "harion") {
-            this.harion.push(element);
-          } else if (element.placeName == "ads") {
-            this.ads.push(element);
-          } else {
+          console.log(element)
+           if (element.placeName.trim() == "FARIDABAD") {
+            this.faridabad.push(element);
+          } else if (element.placeName.trim() == "DESAWAR") {
+            console.log(element,"dadfadsf fasdf fas")
             this.deshawar.push(element);
+        } else if (element.placeName.trim() == "GALI") {
+          this.gali.push(element);
+      } else if (element.placeName.trim() == "GHAZIABAD") {
+        this.GHAZIABAD.push(element);
+      }
+          else
+          {
+            return
           }
         });
       });
